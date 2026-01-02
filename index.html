@@ -1,89 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grupocs7 | Internet, Mobile Lines & Devices (USA)</title>
-  <meta name="description" content="Grupocs7 (CS7 Telecom) — Internet plans, mobile lines, and devices in the United States. Call 301-263-5865." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS7 Telecom | Internet & Mobile Marketplace</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b1220;
-      color: #ffffff;
-    }
-    header {
-      padding: 40px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #ff7a18, #5b78ff);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .card {
-      background: #0f1a33;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      background: #ff7a18;
-      color: #000;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-  </style>
+<style>
+:root{
+  --orange:#f57c00;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --light:#f8fafc;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+
+body{background:#fff;color:#111}
+
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 32px;
+  border-bottom:1px solid #eee;
+}
+header img{height:55px}
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+}
+nav a:hover{color:var(--orange)}
+
+/* HERO */
+.hero{
+  padding:60px 32px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.hero h1{
+  font-size:44px;
+  line-height:1.2;
+}
+.hero p{
+  margin:20px 0;
+  color:var(--gray);
+  font-size:18px;
+}
+.hero button{
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  padding:14px 26px;
+  font-size:16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* CAROUSEL */
+.carousel{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+}
+.carousel img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  display:none;
+}
+.carousel img.active{display:block}
+
+/* SECTIONS */
+section{padding:70px 32px}
+section h2{
+  font-size:34px;
+  margin-bottom:20px;
+}
+section p{color:var(--gray)}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+  margin-top:40px;
+}
+.card{
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:28px;
+}
+.card h3{margin-bottom:10px}
+
+/* BRANDS */
+.brands{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  align-items:center;
+  justify-content:center;
+  margin-top:40px;
+}
+.brands img{height:45px;opacity:.85}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  color:#fff;
+  padding:50px 32px;
+}
+footer img{height:45px;margin-bottom:20px}
+footer p{color:#cbd5e1;font-size:14px}
+footer a{color:#fbbf24;text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Grupocs7 | CS7 Telecom</h1>
-  <p>Internet, Mobile Lines & Devices in the United States</p>
+  <img src="assets/img/logo.png" alt="CS7 Telecom Logo">
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#plans">Plans</a>
+    <a href="#partners">Partners</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="toggleLang()">PT</a>
+  </nav>
 </header>
 
-<section>
-  <div class="card">
-    <h2>📡 Internet Plans</h2>
-    <p>High-speed residential internet plans available in your area.</p>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Connecting You to the Best Internet & Mobile Providers in the U.S.</h1>
+    <p>
+      CS7 Telecom is a marketplace that represents top internet and mobile carriers.
+      We help you find the best plans — faster, easier, and with expert support.
+    </p>
+    <button>Check Availability</button>
   </div>
 
-  <div class="card">
-    <h2>📱 Mobile Lines</h2>
-    <p>Affordable mobile phone lines with nationwide coverage.</p>
+  <div class="carousel">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" class="active">
+    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
   </div>
+</div>
 
+<!-- SERVICES -->
+<section id="services">
+<h2>What We Do</h2>
+<p>
+We are not a carrier. We are your trusted telecom marketplace.
+We connect customers with the best internet and mobile plans from leading providers.
+</p>
+
+<div class="cards">
   <div class="card">
-    <h2>📞 Devices & Support</h2>
-    <p>Smartphones, devices, and personalized assistance.</p>
-    <a class="btn" href="tel:13012635865">Call Now: 301-263-5865</a>
+    <h3>Home Internet</h3>
+    <p>Fiber, cable, and high-speed internet plans available in your area.</p>
   </div>
+  <div class="card">
+    <h3>Mobile Plans</h3>
+    <p>Flexible mobile plans with nationwide coverage.</p>
+  </div>
+  <div class="card">
+    <h3>Expert Support</h3>
+    <p>We guide you through choosing and activating the best option.</p>
+  </div>
+</div>
 </section>
 
-<footer>
-  © 2025 Grupocs7 · CS7 Telecom · United States
+<!-- PARTNERS -->
+<section id="partners">
+<h2>Our Partner Providers</h2>
+<p>We proudly represent leading U.S. telecom brands.</p>
+
+<div class="brands">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Verizon_2015_logo.svg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/AT%26T_logo_2016.svg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/T-Mobile_logo.svg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Xfinity_Logo.svg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Spectrum_Logo.svg">
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+<img src="assets/img/logo.png" alt="CS7 Telecom">
+<p>
+CS7 Telecom is an independent marketplace and authorized sales partner.
+We do not own the networks — we help you connect to them.
+</p>
+<p>
+© 2026 CS7 Telecom · All rights reserved
+</p>
 </footer>
+
+<script>
+let slides=document.querySelectorAll('.carousel img');
+let index=0;
+setInterval(()=>{
+  slides[index].classList.remove('active');
+  index=(index+1)%slides.length;
+  slides[index].classList.add('active');
+},3500);
+
+function toggleLang(){
+  alert("Portuguese version coming soon (/pt).");
+}
+</script>
 
 </body>
 </html>
