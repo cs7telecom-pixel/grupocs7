@@ -87,19 +87,29 @@ nav a:hover{color:var(--orange)}
 .carousel-overlay p{
   font-size:20px;
   margin-top:15px;
-  max-width:650px;
-}
+  <div class="carousel" id="carousel">
 
-/* SECTIONS */
-section{
-  padding:80px 40px;
-  text-align:center;
-}
+  <!-- Pessoa usando celular, sorrindo -->
+  <div class="slide active"
+    style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=80');">
+  </div>
 
-h2{
-  color:var(--orange);
-  font-size:36px;
-  margin-bottom:20px;
+  <!-- Família conectada, TV ligada, Wi-Fi -->
+  <div class="slide"
+    style="background-image:url('https://images.unsplash.com/photo-1601758064134-59e95c9a6c47?auto=format&fit=crop&w=1600&q=80');">
+  </div>
+
+  <!-- Jovem usando notebook e celular -->
+  <div class="slide"
+    style="background-image:url('https://images.unsplash.com/photo-1512499617640-c2f999fe5b8b?auto=format&fit=crop&w=1600&q=80');">
+  </div>
+
+  <!-- Criança + família usando internet -->
+  <div class="slide"
+    style="background-image:url('https://images.unsplash.com/photo-1549921296-3fd62c6f0980?auto=format&fit=crop&w=1600&q=80');">
+  </div>
+
+</div>
 }
 
 /* OPERATORS */
@@ -196,11 +206,7 @@ footer{
 </section>
 
 <footer id="contact">
-  <p><strong>CS7 Telecom</strong></p>
-  <p>📍 Maryland – United States</p>
-  <p>📞 +1 (XXX) XXX-XXXX</p>
-  <p>© 2026 CS7 Telecom. All rights reserved.</p>
-</footer>
+  
 
 <script>
 let slides=document.querySelectorAll('.slide');
