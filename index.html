@@ -3,851 +3,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Grupo CS7 | Internet & Mobile Lines (USA)</title>
+  <title>Grupo CS7 | Internet, Mobile Lines & Devices (USA)</title>
   <meta name="description" content="Grupo CS7 — Internet plans, mobile lines, and devices in the United States. Call 301-263-5865." />
 
   <style>
     :root{
-      --bg:#070b14;
-      --card:#0b1224;
-      --muted:#a7b1c7;
-      --text:#eef2ff;
-      --line: rgba(255,255,255,.10);
-      --shadow: 0 24px 70px rgba(0,0,0,.45);
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --card:#0f213f;
+      --text:#e8edf6;
+      --muted:#a8b2c7;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
       --radius:18px;
 
-      /* Ajuste aqui depois para as cores do logo */
+      /* Brand (we adjust later to match your logo colors) */
       --brand:#ff7a18;
       --brand2:#5b78ff;
-      --ring: rgba(255,122,24,.22);
+      --ring:rgba(255,122,24,.30);
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(91,120,255,.20), transparent 60%),
-        radial-gradient(1000px 700px at 90% 20%, rgba(255,122,24,.16), transparent 55%),
-        linear-gradient(180deg, #060a13, #050815 55%, #050714);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(91,120,255,.18), transparent 60%),
+                  radial-gradient(900px 500px at 85% 10%, rgba(255,122,24,.16), transparent 55%),
+                  var(--bg);
       color:var(--text);
+      overflow-x:hidden;
     }
-
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{width:min(1160px, 92%); margin:0 auto}
+    .container{max-width:1120px; margin:0 auto; padding:0 18px}
 
-    /* TOP BAR */
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(6,10,19,.62);
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.65);
       border-bottom:1px solid var(--line);
     }
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:74px;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 240px;
+      display:flex; align-items:center; gap:12px;
+      min-width: 210px;
     }
-    .brand .logo{
-      width:46px; height:46px;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      flex:0 0 auto;
+    .brand img{
+      width:46px; height:46px; border-radius:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px;
+      object-fit:contain;
     }
-    .brand .title{
-      line-height:1.1;
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.05;
     }
-    .brand .title b{font-size:15px; display:block}
-    .brand .title span{font-size:12px; color:var(--muted)}
+    .brand .name strong{font-size:15px}
+    .brand .name span{font-size:12px; color:var(--muted)}
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:18px;
-      padding:0; margin:0;
-      align-items:center;
+    .menu{
+      display:flex; align-items:center; gap:18px;
     }
-    nav a{
-      color:rgba(238,242,255,.86);
-      font-weight:600;
-      font-size:14px;
+    .menu a{
+      font-size:13px; color:var(--muted);
       padding:10px 10px;
       border-radius:12px;
       transition:.2s;
     }
-    nav a:hover{background: rgba(255,255,255,.06)}
-    nav a.active{outline:2px solid var(--ring); background: rgba(255,255,255,.05)}
+    .menu a:hover{color:var(--text); background:rgba(255,255,255,.06)}
 
     .right{
       display:flex; align-items:center; gap:10px;
+      min-width: 280px;
+      justify-content:flex-end;
     }
-
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-size:13px;
+    }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
       padding:11px 14px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      cursor:pointer;
-      font-weight:700;
-      transition:.18s;
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
-    .btn.primary{
-      border-color: rgba(255,122,24,.45);
       background: linear-gradient(135deg, rgba(255,122,24,.18), rgba(91,120,255,.14));
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-    }
-
-    .hamburger{
-      display:none;
-      width:44px; height:44px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      cursor:pointer;
-      align-items:center;
-      justify-content:center;
-      gap:5px;
-      flex-direction:column;
-    }
-    .hamburger span{
-      width:18px; height:2px; background: rgba(238,242,255,.9);
-      border-radius:999px;
-    }
-
-    /* HERO + CAROUSEL */
-    .hero{
-      padding:22px 0 0;
-    }
-    .carousel{
-      position:relative;
-      border-radius: 24px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      min-height: 520px;
-    }
-    .slides{
-      position:absolute; inset:0;
-    }
-    .slide{
-      position:absolute; inset:0;
-      opacity:0;
-      transition: opacity .8s ease;
-      transform: scale(1.02);
-      filter: brightness(1.06) saturate(1.25);
-    }
-    .slide.active{opacity:1}
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .shade{
-      position:absolute; inset:0;
-      background:
-        linear-gradient(90deg, rgba(5,7,20,.85) 0%, rgba(5,7,20,.35) 55%, rgba(5,7,20,.15) 100%),
-        linear-gradient(180deg, rgba(5,7,20,.12) 0%, rgba(5,7,20,.58) 100%);
-    }
-    .heroContent{
-      position:relative;
-      padding: 64px 26px;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 26px;
-      align-items:center;
-    }
-    h1{
-      margin:0 0 12px;
-      font-size: 44px;
-      letter-spacing: -.02em;
-    }
-    .lead{
-      color: rgba(238,242,255,.86);
-      font-size: 17px;
-      line-height: 1.6;
-      max-width: 52ch;
-      margin: 0 0 18px;
-    }
-    .pillRow{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 18px}
-    .pill{
-      padding:10px 12px;
-      border-radius: 999px;
-      font-weight:800;
-      font-size: 13px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-    }
-    .pill strong{color: var(--brand)}
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap}
-
-    .infoCard{
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(5,7,20,.45);
-      box-shadow: 0 18px 50px rgba(0,0,0,.32);
-      padding: 18px;
-    }
-    .infoCard h3{margin:0 0 8px; font-size:16px}
-    .infoCard p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
-    .quick{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top: 14px;
-    }
-    .q{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      padding:12px;
-    }
-    .q b{display:block; font-size:13px; margin-bottom:4px}
-    .q span{color:var(--muted); font-size:13px}
-
-    .dots{
-      position:absolute;
-      left: 26px;
-      bottom: 18px;
-      display:flex;
-      gap:8px;
-      z-index:10;
-    }
-    .dot{
-      width:9px; height:9px;
-      border-radius:999px;
-      background: rgba(255,255,255,.35);
-      border: 1px solid rgba(255,255,255,.20);
-      cursor:pointer;
-      transition:.2s;
-    }
-    .dot.active{background: var(--brand); transform: scale(1.15); border-color: rgba(255,122,24,.65)}
-
-    /* SECTIONS */
-    section{padding: 72px 0}
-    .sectionTitle{
-      text-align:center;
-      margin: 0 0 12px;
-      font-size: 34px;
-      letter-spacing:-.02em;
-      color: var(--text);
-    }
-    .sectionLead{
-      text-align:center;
-      margin:0 auto 30px;
-      color: var(--muted);
-      max-width: 70ch;
-      line-height:1.7;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .card{
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      padding: 18px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.20);
-    }
-    .card h4{margin:0 0 8px; font-size:16px}
-    .card p{margin:0; color:var(--muted); line-height:1.65; font-size:14px}
-
-    .plans{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      align-items:stretch;
-    }
-    .plan{
-      border-radius: 22px;
-      border:1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      padding: 20px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      position:relative;
-      overflow:hidden;
-    }
-    .plan:before{
-      content:"";
-      position:absolute; inset:-40px;
-      background: radial-gradient(350px 220px at 20% 15%, rgba(255,122,24,.18), transparent 60%),
-                  radial-gradient(300px 200px at 80% 0%, rgba(91,120,255,.16), transparent 55%);
-      pointer-events:none;
-    }
-    .plan > *{position:relative}
-    .badge{
-      display:inline-flex;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      font-weight:900;
-      font-size:12px;
-      margin-bottom: 10px;
-    }
-    .price{
-      font-size: 40px;
-      margin: 0 0 6px;
-      letter-spacing:-.02em;
-      color: var(--brand);
-      font-weight: 1000;
-    }
-    .price small{font-size:14px; color: rgba(238,242,255,.85); font-weight:800}
-    .plan ul{margin: 12px 0 0; padding-left: 18px; color: rgba(238,242,255,.86); line-height:1.8}
-    .plan li{color: rgba(238,242,255,.82)}
-    .muted{color: var(--muted)}
-
-    /* OPERATORS / LOGOS */
-    .operators{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap: 14px;
-      margin-top: 18px;
-      opacity:.95;
-    }
-    .op{
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      padding: 10px 14px;
-      font-weight: 900;
-      color: rgba(238,242,255,.88);
-      font-size: 13px;
-    }
-
-    /* CONTACT */
-    .contactBox{
-      border-radius: 26px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      align-items:center;
-    }
-    .contactBox h3{margin:0 0 10px; font-size:20px}
-    .contactBox p{margin:0; color:var(--muted); line-height:1.7}
-    .contactActions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-
-    footer{
-      border-top: 1px solid var(--line);
-      padding: 26px 0 40px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 920px){
-      .heroGrid{grid-template-columns:1fr}
-      .carousel{min-height: 620px}
-      nav{display:none}
-      .hamburger{display:flex}
-      .cards{grid-template-columns:1fr}
-      .plans{grid-template-columns:1fr}
-      .contactBox{grid-template-columns:1fr}
-      .contactActions{justify-content:flex-start}
-      h1{font-size:38px}
-    }
-
-    /* MOBILE MENU */
-    .mobileMenu{
-      display:none;
-      border-top: 1px solid var(--line);
-      padding: 10px 0 14px;
-    }
-    .mobileMenu a{
-      display:block;
-      padding:12px 10px;
-      border-radius:14px;
-      font-weight:800;
-      color: rgba(238,242,255,.88);
-    }
-    .mobileMenu a:hover{background: rgba(255,255,255,.06)}
-    .mobileMenu.open{display:block}
-  </style>
-</head>
-
-<body>
-<header>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="#top" aria-label="Grupo CS7 Home">
-        <div class="logo">
-          <!-- LOGO: o nome do arquivo precisa ser EXATAMENTE esse -->
-          <img src="CS7 Telecom_Logo_21052017.png" alt="Grupo CS7 Logo">
-        </div>
-        <div class="title">
-          <b>Grupo CS7</b>
-          <span data-i18n="tagline">Internet • Mobile Lines • Devices (USA)</span>
-        </div>
-      </a>
-
-      <nav aria-label="Main navigation">
-        <ul id="navLinks">
-          <li><a href="#services" class="navlink" data-i18n="nav_services">Services</a></li>
-          <li><a href="#plans" class="navlink" data-i18n="nav_plans">Plans</a></li>
-          <li><a href="#coverage" class="navlink" data-i18n="nav_coverage">Coverage</a></li>
-          <li><a href="#contact" class="navlink" data-i18n="nav_contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="right">
-        <button class="btn" id="langBtn" type="button" aria-label="Change language">EN → PT</button>
-        <a class="btn primary" href="tel:3012635865" data-i18n="call_btn">Call 301-263-5865</a>
-        <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <div class="mobileMenu" id="mobileMenu">
-      <a href="#services" class="mnav" data-i18n="nav_services">Services</a>
-      <a href="#plans" class="mnav" data-i18n="nav_plans">Plans</a>
-      <a href="#coverage" class="mnav" data-i18n="nav_coverage">Coverage</a>
-      <a href="#contact" class="mnav" data-i18n="nav_contact">Contact</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-  <div class="container hero">
-    <div class="carousel" aria-label="Hero carousel">
-      <div class="slides" id="slides">
-        <!-- Imagens com “pessoas usando internet” (feliz, família, celular, notebook) -->
-        <div class="slide active">
-          <img alt="People using mobile internet" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1600&q=80">
-        </div>
-        <div class="slide">
-          <img alt="Family streaming on TV with Wi-Fi" src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=80">
-        </div>
-        <div class="slide">
-          <img alt="Smiling people using laptop and phone" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80">
-        </div>
-      </div>
-
-      <div class="shade"></div>
-
-      <div class="heroContent">
-        <div class="heroGrid">
-          <div>
-            <div class="pillRow">
-              <div class="pill"><strong>Fast</strong> Wi-Fi</div>
-              <div class="pill"><strong>Simple</strong> setup</div>
-              <div class="pill"><strong>Support</strong> in EN/PT</div>
-            </div>
-
-            <h1 data-i18n="hero_title">Internet & Mobile that keep your family connected.</h1>
-            <p class="lead" data-i18n="hero_lead">
-              Choose plans that fit your home: streaming, gaming, work-from-home, and everyday mobile use.
-              We help you get connected with confidence.
-            </p>
-
-            <div class="ctaRow">
-              <a class="btn primary" href="#plans" data-i18n="hero_cta1">See Plans</a>
-              <a class="btn" href="#contact" data-i18n="hero_cta2">Get Help Now</a>
-            </div>
-          </div>
-
-          <div class="infoCard">
-            <h3 data-i18n="card_title">Quick info</h3>
-            <p data-i18n="card_text">Talk to a specialist and find the best option for your address and usage.</p>
-
-            <div class="quick">
-              <div class="q">
-                <b data-i18n="q1_title">Phone</b>
-                <span>(301) 263-5865</span>
-              </div>
-              <div class="q">
-                <b data-i18n="q2_title">Location</b>
-                <span data-i18n="q2_text">United States</span>
-              </div>
-              <div class="q">
-                <b data-i18n="q3_title">Services</b>
-                <span data-i18n="q3_text">Home Internet & Mobile Lines</span>
-              </div>
-              <div class="q">
-                <b data-i18n="q4_title">Languages</b>
-                <span data-i18n="q4_text">English / Português</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dots" id="dots" aria-label="Carousel dots"></div>
-      </div>
-    </div>
-  </div>
-
-  <section id="services">
-    <div class="container">
-      <h2 class="sectionTitle" data-i18n="services_title">Services</h2>
-      <p class="sectionLead" data-i18n="services_lead">
-        Everything you need to stay connected — from strong home Wi-Fi to mobile lines and devices.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h4 data-i18n="s1_title">Home Internet</h4>
-          <p data-i18n="s1_text">Plans for streaming, gaming, and work-from-home with stable performance.</p>
-        </div>
-        <div class="card">
-          <h4 data-i18n="s2_title">Mobile Lines</h4>
-          <p data-i18n="s2_text">Flexible mobile line options with reliable coverage for your routine.</p>
-        </div>
-        <div class="card">
-          <h4 data-i18n="s3_title">Devices</h4>
-          <p data-i18n="s3_text">Help choosing phones and devices that fit your needs and budget.</p>
-        </div>
-      </div>
-
-      <div class="operators" aria-label="Partner brands">
-        <span class="op">Xfinity</span>
-        <span class="op">Verizon</span>
-        <span class="op">Spectrum</span>
-        <span class="op">AT&amp;T</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="plans">
-    <div class="container">
-      <h2 class="sectionTitle" data-i18n="plans_title">Plans</h2>
-      <p class="sectionLead" data-i18n="plans_lead">
-        Example offers. Availability may depend on your address. Call us and we’ll verify coverage.
-      </p>
-
-      <div class="plans">
-        <div class="plan">
-          <div class="badge" data-i18n="p1_badge">Most popular</div>
-          <div class="price">$50 <small data-i18n="per_month">/ month</small></div>
-          <div class="muted" data-i18n="p1_name">1 Gig Home Internet</div>
-          <ul>
-            <li data-i18n="p1_li1">Strong Wi-Fi for streaming + gaming</li>
-            <li data-i18n="p1_li2">Great for families and smart devices</li>
-            <li data-i18n="p1_li3">Support in English / Português</li>
-          </ul>
-          <div style="margin-top:14px">
-            <a class="btn primary" href="tel:3012635865" data-i18n="p_call">Call to get this plan</a>
-          </div>
-        </div>
-
-        <div class="plan">
-          <div class="badge" data-i18n="p2_badge">Need mobile too?</div>
-          <div class="price" style="color:var(--brand2)">$<span style="font-variant-numeric:tabular-nums">--</span> <small data-i18n="per_month">/ month</small></div>
-          <div class="muted" data-i18n="p2_name">Mobile lines + device options</div>
-          <ul>
-            <li data-i18n="p2_li1">Choose the best line for your usage</li>
-            <li data-i18n="p2_li2">Keep your number or get a new one</li>
-            <li data-i18n="p2_li3">We help you pick the best device</li>
-          </ul>
-          <div style="margin-top:14px">
-            <a class="btn" href="#contact" data-i18n="p_quote">Request a quote</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="coverage">
-    <div class="container">
-      <h2 class="sectionTitle" data-i18n="cov_title">Coverage</h2>
-      <p class="sectionLead" data-i18n="cov_lead">
-        Tell us your ZIP code or address and we’ll check the best availability for your area.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h4 data-i18n="c1_title">Fast check</h4>
-          <p data-i18n="c1_text">We verify what’s available at your address and recommend the best option.</p>
-        </div>
-        <div class="card">
-          <h4 data-i18n="c2_title">Real usage</h4>
-          <p data-i18n="c2_text">We tailor plans for streaming, remote work, online school, and gaming.</p>
-        </div>
-        <div class="card">
-          <h4 data-i18n="c3_title">Easy support</h4>
-          <p data-i18n="c3_text">Talk to a human — we guide you step by step in EN/PT.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="contactBox">
-        <div>
-          <h3 data-i18n="contact_title">Contact Grupo CS7</h3>
-          <p data-i18n="contact_text">
-            Call now and we’ll help you choose the best plan. Coverage depends on your address.
-          </p>
-          <p style="margin-top:10px"><b>Phone:</b> (301) 263-5865</p>
-          <p><b data-i18n="contact_name_lbl">Representative:</b> Clayton Sanches</p>
-        </div>
-        <div class="contactActions">
-          <a class="btn primary" href="tel:3012635865" data-i18n="contact_call">Call</a>
-          <a class="btn" href="#plans" data-i18n="contact_plans">View plans</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <span>© <span id="year"></span> Grupo CS7. <span data-i18n="footer_rights">All rights reserved.</span></span>
-      <span data-i18n="footer_note">This website is informational. Offers may vary by location.</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // ====== YEAR ======
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // ====== MOBILE MENU ======
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if(menuBtn){
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-    });
-  }
-  document.querySelectorAll(".mnav").forEach(a=>{
-    a.addEventListener("click", ()=> mobileMenu.classList.remove("open"));
-  });
-
-  // ====== ACTIVE NAV HIGHLIGHT ======
-  const navLinks = document.querySelectorAll(".navlink");
-  const sections = ["services","plans","coverage","contact"].map(id=>document.getElementById(id));
-  function setActive(hash){
-    navLinks.forEach(a=>a.classList.toggle("active", a.getAttribute("href") === hash));
-  }
-  window.addEventListener("hashchange", () => setActive(location.hash || "#services"));
-
-  // ====== CAROUSEL ======
-  const slideEls = Array.from(document.querySelectorAll(".slide"));
-  const dotsWrap = document.getElementById("dots");
-  let idx = 0;
-  let timer = null;
-
-  function buildDots(){
-    dotsWrap.innerHTML = "";
-    slideEls.forEach((_, i)=>{
-      const d = document.createElement("button");
-      d.className = "dot" + (i===0 ? " active" : "");
-      d.type = "button";
-      d.setAttribute("aria-label","Go to slide " + (i+1));
-      d.addEventListener("click", ()=> goTo(i, true));
-      dotsWrap.appendChild(d);
-    });
-  }
-
-  function goTo(i, reset){
-    idx = i;
-    slideEls.forEach((s, k)=> s.classList.toggle("active", k===idx));
-    const dots = Array.from(document.querySelectorAll(".dot"));
-    dots.forEach((d,k)=> d.classList.toggle("active", k===idx));
-    if(reset){
-      clearInterval(timer);
-      timer = setInterval(next, 5200);
-    }
-  }
-
-  function next(){
-    idx = (idx + 1) % slideEls.length;
-    goTo(idx, false);
-  }
-
-  buildDots();
-  timer = setInterval(next, 5200);
-
-  // ====== I18N (EN primary / PT secondary) ======
-  let lang = "en";
-  const dict = {
-    en: {
-      tagline: "Internet • Mobile Lines • Devices (USA)",
-      nav_services: "Services",
-      nav_plans: "Plans",
-      nav_coverage: "Coverage",
-      nav_contact: "Contact",
-      call_btn: "Call 301-263-5865",
-
-      hero_title: "Internet & Mobile that keep your family connected.",
-      hero_lead: "Choose plans that fit your home: streaming, gaming, work-from-home, and everyday mobile use. We help you get connected with confidence.",
-      hero_cta1: "See Plans",
-      hero_cta2: "Get Help Now",
-
-      card_title: "Quick info",
-      card_text: "Talk to a specialist and find the best option for your address and usage.",
-      q1_title: "Phone",
-      q2_title: "Location",
-      q2_text: "United States",
-      q3_title: "Services",
-      q3_text: "Home Internet & Mobile Lines",
-      q4_title: "Languages",
-      q4_text: "English / Português",
-
-      services_title: "Services",
-      services_lead: "Everything you need to stay connected — from strong home Wi-Fi to mobile lines and devices.",
-      s1_title: "Home Internet",
-      s1_text: "Plans for streaming, gaming, and work-from-home with stable performance.",
-      s2_title: "Mobile Lines",
-      s2_text: "Flexible mobile line options with reliable coverage for your routine.",
-      s3_title: "Devices",
-      s3_text: "Help choosing phones and devices that fit your needs and budget.",
-
-      plans_title: "Plans",
-      plans_lead: "Example offers. Availability may depend on your address. Call us and we’ll verify coverage.",
-      p1_badge: "Most popular",
-      per_month: "/ month",
-      p1_name: "1 Gig Home Internet",
-      p1_li1: "Strong Wi-Fi for streaming + gaming",
-      p1_li2: "Great for families and smart devices",
-      p1_li3: "Support in English / Português",
-      p_call: "Call to get this plan",
-
-      p2_badge: "Need mobile too?",
-      p2_name: "Mobile lines + device options",
-      p2_li1: "Choose the best line for your usage",
-      p2_li2: "Keep your number or get a new one",
-      p2_li3: "We help you pick the best device",
-      p_quote: "Request a quote",
-
-      cov_title: "Coverage",
-      cov_lead: "Tell us your ZIP code or address and we’ll check the best availability for your area.",
-      c1_title: "Fast check",
-      c1_text: "We verify what’s available at your address and recommend the best option.",
-      c2_title: "Real usage",
-      c2_text: "We tailor plans for streaming, remote work, online school, and gaming.",
-      c3_title: "Easy support",
-      c3_text: "Talk to a human — we guide you step by step in EN/PT.",
-
-      contact_title: "Contact Grupo CS7",
-      contact_text: "Call now and we’ll help you choose the best plan. Coverage depends on your address.",
-      contact_name_lbl: "Representative:",
-      contact_call: "Call",
-      contact_plans: "View plans",
-
-      footer_rights: "All rights reserved.",
-      footer_note: "This website is informational. Offers may vary by location."
-    },
-
-    pt: {
-      tagline: "Internet • Linhas móveis • Aparelhos (EUA)",
-      nav_services: "Serviços",
-      nav_plans: "Planos",
-      nav_coverage: "Cobertura",
-      nav_contact: "Contato",
-      call_btn: "Ligar 301-263-5865",
-
-      hero_title: "Internet e celular para manter sua família conectada.",
-      hero_lead: "Escolha planos para sua casa: streaming, jogos, home office e uso diário no celular. A gente ajuda você a conectar com segurança.",
-      hero_cta1: "Ver planos",
-      hero_cta2: "Falar agora",
-
-      card_title: "Informações rápidas",
-      card_text: "Fale com um especialista e encontre a melhor opção para seu endereço e seu uso.",
-      q1_title: "Telefone",
-      q2_title: "Local",
-      q2_text: "Estados Unidos",
-      q3_title: "Serviços",
-      q3_text: "Internet residencial e linhas móveis",
-      q4_title: "Idiomas",
-      q4_text: "Inglês / Português",
-
-      services_title: "Serviços",
-      services_lead: "Tudo para você ficar conectado — Wi-Fi forte em casa, linhas móveis e aparelhos.",
-      s1_title: "Internet residencial",
-      s1_text: "Planos para streaming, jogos e home office com estabilidade.",
-      s2_title: "Linhas móveis",
-      s2_text: "Opções flexíveis com boa cobertura para sua rotina.",
-      s3_title: "Aparelhos",
-      s3_text: "Ajuda para escolher celular e dispositivos dentro do seu orçamento.",
-
-      plans_title: "Planos",
-      plans_lead: "Ofertas de exemplo. A disponibilidade depende do endereço. Ligue e verificamos a cobertura.",
-      p1_badge: "Mais vendido",
-      per_month: "/ mês",
-      p1_name: "Internet 1 Giga",
-      p1_li1: "Wi-Fi forte para streaming e jogos",
-      p1_li2: "Ótimo para família e dispositivos",
-      p1_li3: "Suporte em inglês / português",
-      p_call: "Ligar para pegar esse plano",
-
-      p2_badge: "Precisa de linha móvel?",
-      p2_name: "Linhas móveis + opções de aparelho",
-      p2_li1: "Escolha a melhor linha para seu uso",
-      p2_li2: "Mantenha seu número ou faça portabilidade",
-      p2_li3: "Ajudamos a escolher o melhor aparelho",
-      p_quote: "Pedir orçamento",
-
-      cov_title: "Cobertura",
-      cov_lead: "Informe seu ZIP code ou endereço e verificamos a melhor disponibilidade na sua área.",
-      c1_title: "Checagem rápida",
-      c1_text: "Verificamos o que tem no seu endereço e recomendamos a melhor opção.",
-      c2_title: "Uso real",
-      c2_text: "Ajustamos para streaming, home office, escola online e jogos.",
-      c3_title: "Suporte fácil",
-      c3_text: "Atendimento humano — guiamos passo a passo em EN/PT.",
-
-      contact_title: "Contato Grupo CS7",
-      contact_text: "Ligue agora e ajudamos você a escolher o melhor plano. A cobertura depende do endereço.",
-      contact_name_lbl: "Representante:",
-      contact_call: "Ligar",
-      contact_plans: "Ver planos",
-
-      footer_rights: "Todos os direitos reservados.",
-      footer_note: "Este site é informativo. Ofertas podem variar por região."
-    }
-  };
-
-  function applyLang(newLang){
-    lang = newLang;
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-      const key = el.getAttribute("data-i18n");
-      if(dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
-    });
-    document.getElementById("langBtn").textContent = (lang === "en") ? "EN → PT" : "PT → EN";
-  }
-
-  document.getElementById("langBtn").addEventListener("click", ()=>{
-    applyLang(lang === "en" ? "pt" : "en");
-  });
-
-  // default EN
-  applyLang("en");
-</script>
-</body>
-</html>
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      cursor:poi
