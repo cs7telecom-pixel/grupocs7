@@ -1,815 +1,232 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CS7 Telecom | Internet + Mobile + TV Streaming</title>
-  <meta name="description" content="Plans from $39.99. Internet, mobile, and TV streaming — all in one place." />
-  <style>
-    :root{
-      --bg:#070b16;
-      --card:#0b1430;
-      --text:#e9eefc;
-      --muted:#9fb0d0;
-      --brand:#6d5bff;
-      --brand2:#ff2bd6;
-      --brand3:#00e5ff;
-      --shadow: 0 24px 80px rgba(0,0,0,.45);
-      --radius: 22px;
-      --maxw: 1120px;
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(109,91,255,.28), transparent 55%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(255,43,214,.22), transparent 55%),
-                  radial-gradient(900px 700px at 60% 100%, rgba(0,229,255,.18), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-    a{ color:inherit; text-decoration:none; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grupo CS7 | Internet & Mobile</title>
 
-    .wrap{ width:min(var(--maxw), calc(100% - 36px)); margin:0 auto; }
-    header{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(14px);
-      background: rgba(7,11,22,.58);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.2px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: conic-gradient(from 200deg, var(--brand), var(--brand2), var(--brand3), var(--brand));
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 40%);
-      transform: rotate(20deg);
-    }
-    .actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      color: var(--text);
-      font-weight:650;
-      cursor:pointer;
-      user-select:none;
-    }
-    .pill strong{ font-weight:800; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:11px 14px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      border: 0;
-      color:#071025;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow: 0 16px 40px rgba(109,91,255,.25);
-    }
-    .btn:active{ transform: translateY(1px); }
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0b1220;
+  color:#fff;
+}
+a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:auto;padding:0 16px}
 
-    main{ padding: 28px 0 56px; }
+/* NAVBAR */
+header{
+  background:#0f1a33;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:70px;
+}
+nav .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+}
+nav img{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+}
+nav ul{
+  display:flex;
+  gap:20px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+nav ul li a{
+  color:#cfd8ff;
+  font-size:14px;
+}
+nav ul li a:hover{color:#fff}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items:stretch;
-      margin-top: 10px;
-    }
-    @media (max-width: 920px){
-      .hero{ grid-template-columns: 1fr; }
-    }
+/* HERO */
+.hero{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+}
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .8s;
+}
+.slide.active{opacity:1}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+}
+.hero-text{
+  max-width:520px;
+}
+.hero h1{font-size:42px;margin:0 0 12px}
+.hero p{color:#ddd;font-size:16px}
+.buttons a{
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+  padding:12px 18px;
+  background:#ff7a18;
+  color:#000;
+  border-radius:6px;
+  font-weight:bold;
+}
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .cardPad{ padding: 18px; }
+/* SECTIONS */
+section{padding:70px 0}
+h2{text-align:center;margin-bottom:30px}
 
-    .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(0,229,255,.10);
-      border:1px solid rgba(0,229,255,.18);
-      color: #dffcff;
-      font-weight:750;
-      font-size: 13px;
-      width: fit-content;
-    }
-    h1{
-      margin: 12px 0 8px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.06;
-      letter-spacing: -0.4px;
-    }
-    .sub{
-      margin:0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.45;
-      max-width: 56ch;
-    }
-    .mini{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 14px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(11,20,48,.65);
-      border:1px solid rgba(255,255,255,.07);
-      color: var(--text);
-      font-weight:700;
-      font-size: 14px;
-    }
-    .chip i{
-      width:10px; height:10px; border-radius: 99px;
-      background: linear-gradient(90deg, var(--brand3), var(--brand2));
-      box-shadow: 0 0 18px rgba(0,229,255,.35);
-      display:inline-block;
-    }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:#101e3a;
+  padding:20px;
+  border-radius:10px;
+}
 
-    /* BIG Carousel */
-    .carouselWrap{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 16px;
-    }
-    src="...w=2400&q=80&v=20260103"
+/* FOOTER */
+footer{
+  background:#0f1a33;
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+}
 
-    .carousel{
-      width:100%;
-      max-width: 1080px;
-      aspect-ratio: 16 / 8.2;
-      border-radius: 26px;
-      overflow:hidden;
-      position:relative;
-      background: #050916;
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 28px 90px rgba(0,0,0,.55);
-    }
-    @media (max-width: 700px){
-      .carousel{ aspect-ratio: 16 / 10.5; }
-    }
-    .track{
-      height:100%;
-      display:flex;
-      transition: transform .55s cubic-bezier(.2,.9,.2,1);
-      will-change: transform;
-    }
-    .slide{
-      min-width:100%;
-      height:100%;
-      position:relative;
-      overflow:hidden;
-      background: radial-gradient(800px 380px at 30% 30%, rgba(109,91,255,.25), transparent 60%),
-                  radial-gradient(700px 420px at 80% 40%, rgba(255,43,214,.18), transparent 55%),
-                  radial-gradient(600px 500px at 55% 100%, rgba(0,229,255,.18), transparent 55%),
-                  #050916;
-    }
-    .slide img{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: cover;
-      transform: scale(1.03);
-      filter: saturate(1.25) contrast(1.08) brightness(1.02);
-    }
-    .slide::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(900px 420px at 15% 20%, rgba(0,229,255,.18), transparent 55%),
-        radial-gradient(900px 480px at 85% 25%, rgba(255,43,214,.18), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45));
-      pointer-events:none;
-    }
-    .gridGlow{
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: .16;
-      mask-image: radial-gradient(circle at 35% 40%, black 0 45%, transparent 70%);
-      pointer-events:none;
-    }
-    .wifi{
-      position:absolute;
-      right: 18px;
-      top: 18px;
-      width: 120px;
-      height: 120px;
-      opacity: .95;
-      filter: drop-shadow(0 0 22px rgba(0,229,255,.35));
-      pointer-events:none;
-    }
-    .caption{
-      position:absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 14px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      pointer-events:none;
-    }
-    .capBox{
-      max-width: 70%;
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(5,9,22,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-    }
-    .capTitle{
-      margin:0;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-      font-size: 16px;
-    }
-    .capText{
-      margin:4px 0 0;
-      color: rgba(233,238,252,.85);
-      font-size: 13px;
-      line-height: 1.3;
-    }
-    .speedTag{
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(109,91,255,.22), rgba(255,43,214,.18));
-      border: 1px solid rgba(255,255,255,.10);
-      font-weight: 900;
-      color: #f3f4ff;
-      box-shadow: 0 18px 50px rgba(0,0,0,.25);
-      white-space:nowrap;
-    }
-
-    .navBtn{
-      position:absolute;
-      top:50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(7,11,22,.55);
-      backdrop-filter: blur(10px);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      z-index: 5;
-      color: var(--text);
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
-      user-select:none;
-    }
-    .navBtn:hover{ background: rgba(7,11,22,.72); }
-    .prev{ left: 12px; }
-    .next{ right: 12px; }
-
-    .dots{
-      position:absolute;
-      left:0; right:0;
-      bottom: 10px;
-      display:flex;
-      justify-content:center;
-      gap:8px;
-      z-index:6;
-      pointer-events:auto;
-    }
-    .dot{
-      width: 9px; height: 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.20);
-      cursor:pointer;
-      opacity:.9;
-    }
-    .dot.active{
-      width: 24px;
-      background: linear-gradient(90deg, rgba(0,229,255,.9), rgba(255,43,214,.8));
-      border-color: rgba(255,255,255,.10);
-    }
-
-    /* Plans section (BIG IMAGE + TEXT) */
-    .plans{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){
-      .plans{ grid-template-columns: 1fr; }
-    }
-    .plansMedia{
-      position:relative;
-      border-radius: 26px;
-      overflow:hidden;
-      min-height: 420px;
-      background:#050916;
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 28px 90px rgba(0,0,0,.55);
-    }
-    .plansMedia img{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: cover;
-      filter: saturate(1.30) contrast(1.08) brightness(1.04);
-      transform: scale(1.03);
-    }
-    .plansMedia:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 520px at 15% 25%, rgba(0,229,255,.20), transparent 55%),
-        radial-gradient(900px 520px at 85% 15%, rgba(255,43,214,.18), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.52));
-      pointer-events:none;
-    }
-    .plansBadge{
-      position:absolute;
-      left:16px; bottom:16px; right:16px;
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:12px;
-      z-index:2;
-    }
-    .plansBadge .box{
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(5,9,22,.62);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      max-width: 72%;
-    }
-    .plansBadge .title{
-      margin:0;
-      font-weight: 950;
-      letter-spacing: -.2px;
-      font-size: 18px;
-    }
-    .plansBadge .desc{
-      margin:6px 0 0;
-      color: rgba(233,238,252,.88);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-    .pricePill{
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0,229,255,.22), rgba(255,43,214,.20));
-      border: 1px solid rgba(255,255,255,.12);
-      font-weight: 950;
-      white-space:nowrap;
-      box-shadow: 0 18px 50px rgba(0,0,0,.25);
-    }
-    .plansText .cardPad{ padding: 18px; }
-    .h2{
-      margin:0 0 10px;
-      font-size: 22px;
-      font-weight: 950;
-      letter-spacing: -.2px;
-    }
-    .bullets{
-      display:grid;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .bullet{
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(11,20,48,.55);
-      border:1px solid rgba(255,255,255,.07);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.35;
-    }
-    .bullet b{ color: var(--text); }
-
-    footer{
-      margin-top: 22px;
-      color: rgba(233,238,252,.70);
-      font-size: 12px;
-      text-align:center;
-      opacity:.9;
-    }
-
-    .arrow{
-      width: 18px; height: 18px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(-45deg);
-      margin-left: -2px;
-    }
-    .arrow.left{ transform: rotate(135deg); margin-left: 2px; }
-  </style>
+/* MOBILE */
+@media(max-width:700px){
+  nav ul{display:none}
+}
+</style>
 </head>
 
 <body>
+
 <header>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand" aria-label="CS7 Telecom">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:14px; opacity:.9;">CS7 Telecom</div>
-          <div style="font-size:12px; color:var(--muted); font-weight:650;">Internet • Mobile • TV Streaming</div>
-        </div>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <img src="cs7-logo.png" alt="Grupo CS7">
+        Grupo CS7
       </div>
-      <div class="actions">
-        <div class="pill" id="langBtn" title="Switch language">
-          <span>Language:</span> <strong id="langLabel">EN</strong>
-        </div>
-        <a class="btn" href="tel:3012635865" aria-label="Call now">Call: (301) 263-5865</a>
-      </div>
-    </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
+<!-- HERO / CAROUSEL -->
+<div id="home" class="hero">
+  <div class="slide active">
+    <img src="https://via.placeholder.com/1600x800?text=IMAGE+1">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/1600x800?text=IMAGE+2">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/1600x800?text=IMAGE+3">
+  </div>
 
-  <!-- HERO + CAROUSEL -->
-  <section class="hero">
-    <div class="card">
-      <div class="cardPad">
-        <div class="kicker" id="kicker">⚡ Fast • Reliable • Simple</div>
-        <h1 id="headline">Internet, Mobile, and TV Streaming — all in one place.</h1>
-        <p class="sub" id="sub">
-          Connect faster, game smoother, and stream without buffering — with plans built for modern life.
-        </p>
-
-        <div class="mini">
-          <div class="chip"><i></i><span id="chip1">Gaming-ready latency</span></div>
-          <div class="chip"><i></i><span id="chip2">Strong Wi-Fi coverage</span></div>
-          <div class="chip"><i></i><span id="chip3">Simple activation</span></div>
-        </div>
-      </div>
-
-      <div class="carouselWrap">
-        <div class="carousel" id="carousel" aria-label="Technology carousel">
-          <div class="track" id="track">
-
-            <!-- Slide 1 -->
-            <div class="slide">
-              <img alt="Parent and child playing videogame at home" loading="eager" decoding="async"
-                   referrerpolicy="no-referrer"
-                   src=src="...w=2400&q=80&v=20260103"
- "https://source.unsplash.com/YhVjtx3Xjmo/2400x1350" />
-              <div class="gridGlow" aria-hidden="true"></div>
-              <svg class="wifi" viewBox="0 0 128 128" aria-hidden="true">
-                <path d="M20 52c26-22 62-22 88 0" fill="none" stroke="rgba(0,229,255,.95)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M34 68c18-16 42-16 60 0" fill="none" stroke="rgba(255,43,214,.85)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M48 84c10-10 22-10 32 0" fill="none" stroke="rgba(109,91,255,.9)" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="64" cy="102" r="7" fill="rgba(233,238,252,.95)"/>
-              </svg>
-              <div class="caption">
-                <div class="capBox">
-                  <p class="capTitle" id="cap1t">Ultra-smooth gaming at home</p>
-                  <p class="capText" id="cap1d">Stable Wi-Fi + speed for streaming and competitive play.</p>
-                </div>
-                <div class="speedTag" id="tag1">LOW LATENCY</div>
-              </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="slide">
-              <img alt="Friends playing videogame on couch" loading="lazy" decoding="async"
-                   referrerpolicy="no-referrer"
-                   src="https://source.unsplash.com/NGS4GEWjNBA/2400x1350" />
-              <div class="gridGlow" aria-hidden="true"></div>
-              <svg class="wifi" viewBox="0 0 128 128" aria-hidden="true">
-                <path d="M20 52c26-22 62-22 88 0" fill="none" stroke="rgba(255,43,214,.9)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M34 68c18-16 42-16 60 0" fill="none" stroke="rgba(0,229,255,.85)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M48 84c10-10 22-10 32 0" fill="none" stroke="rgba(109,91,255,.9)" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="64" cy="102" r="7" fill="rgba(233,238,252,.95)"/>
-              </svg>
-              <div class="caption">
-                <div class="capBox">
-                  <p class="capTitle" id="cap2t">Fast connection. Real fun.</p>
-                  <p class="capText" id="cap2d">No buffering, no lag — just instant response.</p>
-                </div>
-                <div class="speedTag" id="tag2">FAST + STABLE</div>
-              </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="slide">
-              <img alt="Kid playing videogame at home" loading="lazy" decoding="async"
-                   referrerpolicy="no-referrer"
-                   src="https://source.unsplash.com/sbc3iC0uDNU/2400x1350" />
-              <div class="gridGlow" aria-hidden="true"></div>
-              <svg class="wifi" viewBox="0 0 128 128" aria-hidden="true">
-                <path d="M20 52c26-22 62-22 88 0" fill="none" stroke="rgba(0,229,255,.95)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M34 68c18-16 42-16 60 0" fill="none" stroke="rgba(109,91,255,.85)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M48 84c10-10 22-10 32 0" fill="none" stroke="rgba(255,43,214,.9)" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="64" cy="102" r="7" fill="rgba(233,238,252,.95)"/>
-              </svg>
-              <div class="caption">
-                <div class="capBox">
-                  <p class="capTitle" id="cap3t">Perfect for families</p>
-                  <p class="capText" id="cap3d">Multiple devices connected — still fast and responsive.</p>
-                </div>
-                <div class="speedTag" id="tag3">MULTI-DEVICE</div>
-              </div>
-            </div>
-
-            <!-- Slide 4 (always loads) -->
-            <div class="slide">
-              <img alt="3D tech illustration" loading="lazy" decoding="async"
-                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2400' height='1350' viewBox='0 0 2400 1350'%3E%3Cdefs%3E%3CradialGradient id='g1' cx='30%25' cy='20%25' r='80%25'%3E%3Cstop offset='0' stop-color='%236d5bff' stop-opacity='.55'/%3E%3Cstop offset='.55' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='g2' cx='80%25' cy='25%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23ff2bd6' stop-opacity='.45'/%3E%3Cstop offset='.6' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='g3' cx='55%25' cy='100%25' r='75%25'%3E%3Cstop offset='0' stop-color='%2300e5ff' stop-opacity='.35'/%3E%3Cstop offset='.65' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='bg' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23050916'/%3E%3Cstop offset='1' stop-color='%23070b16'/%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='10' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='2400' height='1350' fill='url(%23bg)'/%3E%3Crect width='2400' height='1350' fill='url(%23g1)'/%3E%3Crect width='2400' height='1350' fill='url(%23g2)'/%3E%3Crect width='2400' height='1350' fill='url(%23g3)'/%3E%3Cg filter='url(%23glow)'%3E%3Ccircle cx='520' cy='560' r='14' fill='%2300e5ff'/%3E%3Ccircle cx='980' cy='420' r='16' fill='%23ff2bd6'/%3E%3Ccircle cx='1380' cy='610' r='18' fill='%236d5bff'/%3E%3Ccircle cx='1750' cy='450' r='14' fill='%2300e5ff'/%3E%3Cpath d='M520 560 L980 420 L1380 610 L1750 450' fill='none' stroke='%23e9eefc' stroke-opacity='.8' stroke-width='3'/%3E%3C/g%3E%3Ctext x='120' y='180' fill='%23e9eefc' font-family='Arial' font-size='64' font-weight='800'%3EUltra-Fast Connectivity%3C/text%3E%3Ctext x='120' y='250' fill='%239fb0d0' font-family='Arial' font-size='32'%3E3D Tech Vibes%3C/text%3E%3C/svg%3E" />
-              <div class="gridGlow" aria-hidden="true"></div>
-              <svg class="wifi" viewBox="0 0 128 128" aria-hidden="true">
-                <path d="M20 52c26-22 62-22 88 0" fill="none" stroke="rgba(0,229,255,.95)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M34 68c18-16 42-16 60 0" fill="none" stroke="rgba(255,43,214,.85)" stroke-width="8" stroke-linecap="round"/>
-                <path d="M48 84c10-10 22-10 32 0" fill="none" stroke="rgba(109,91,255,.9)" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="64" cy="102" r="7" fill="rgba(233,238,252,.95)"/>
-              </svg>
-              <div class="caption">
-                <div class="capBox">
-                  <p class="capTitle" id="cap4t">Vibrant 3D tech look</p>
-                  <p class="capText" id="cap4d">Neon network overlay — always loads (built-in).</p>
-                </div>
-                <div class="speedTag" id="tag4">TECH MODE</div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="navBtn prev" id="prevBtn" aria-label="Previous slide"><span class="arrow left"></span></div>
-          <div class="navBtn next" id="nextBtn" aria-label="Next slide"><span class="arrow"></span></div>
-          <div class="dots" id="dots" aria-label="Carousel dots"></div>
+  <div class="overlay">
+    <div class="container">
+      <div class="hero-text">
+        <h1>Fast Internet & Mobile Solutions</h1>
+        <p>Internet plans, mobile lines and devices for your home and family.</p>
+        <div class="buttons">
+          <a href="tel:3012635865">Call Now</a>
+          <a href="#plans">View Plans</a>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Right highlight -->
-    <aside class="card">
-      <div class="cardPad">
-        <h2 style="margin:0 0 8px; font-size:18px; font-weight:950;" id="sideTitle">Best for modern life</h2>
-        <p style="margin:0; color:var(--muted); font-size:14px; line-height:1.45;" id="sideDesc">
-          Faster speed, smoother gaming, and reliable streaming — without hassle.
-        </p>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="tel:3012635865" id="cta1">Call now</a>
-          <span class="pill" style="pointer-events:none;" id="cta2">Coverage check • Plans • Deals</span>
-        </div>
+<section id="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Home Internet</h3>
+        <p>Strong and reliable Wi-Fi for your home.</p>
       </div>
-    </aside>
-  </section>
-
-  <!-- PLANS (BIG IMAGE + TEXT) -->
-  <section class="plans">
-    <div class="plansMedia">
-      <!-- Woman with headset + phone (big, vibrant) -->
-      <img
-        alt="Woman with headset holding a smartphone"
-        loading="lazy"
-        decoding="async"
-        referrerpolicy="no-referrer"
-        src="https://source.unsplash.com/6W4F62sN_yI/2400x1600"
-      />
-      <div class="plansBadge">
-        <div class="box">
-          <p class="title" id="plansTitle">Internet, Mobile, and TV Streaming — all in one place.</p>
-          <p class="desc" id="plansDesc">One simple solution to connect your home and your phone — with reliable speed.</p>
-        </div>
-        <div class="pricePill" id="plansPrice">Plans from $39.99</div>
+      <div class="card">
+        <h3>Mobile Lines</h3>
+        <p>Flexible plans that fit your lifestyle.</p>
+      </div>
+      <div class="card">
+        <h3>Devices</h3>
+        <p>Phones and accessories with easy setup.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="card plansText">
-      <div class="cardPad">
-        <div class="kicker" id="plansKicker">💎 Simple Plans</div>
-        <h2 class="h2" id="plansH2">Choose the plan that fits your life</h2>
-        <p class="sub" id="plansSub">
-          Fast installation guidance, clear options, and a clean experience from start to finish.
-        </p>
-
-        <div class="bullets">
-          <div class="bullet"><b id="b1t">Internet:</b> <span id="b1d">strong Wi-Fi for the whole home.</span></div>
-          <div class="bullet"><b id="b2t">Mobile:</b> <span id="b2d">lines + devices to stay connected anywhere.</span></div>
-          <div class="bullet"><b id="b3t">TV Streaming:</b> <span id="b3d">watch your favorite content smoothly.</span></div>
-          <div class="bullet"><b id="b4t">From $39.99:</b> <span id="b4d">ask about deals and availability.</span></div>
-        </div>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="tel:3012635865" id="cta3">Call to get your plan</a>
-          <span class="pill" style="pointer-events:none;" id="cta4">(301) 263-5865</span>
-        </div>
+<section id="plans">
+  <div class="container">
+    <h2>Popular Plans</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>1 Giga Internet</h3>
+        <p>$50 / month</p>
+      </div>
+      <div class="card">
+        <h3>Mobile Line</h3>
+        <p>Call for pricing</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div>© <span id="year"></span> CS7 Telecom. <span id="footTxt">Fast connectivity for modern life.</span></div>
-  </footer>
-</main>
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p style="text-align:center">
+      Call or text: <strong>(301) 263-5865</strong><br>
+      Representative: Clayton Sanches
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Grupo CS7 – All rights reserved
+</footer>
 
 <script>
-(function(){
-  // ===== Year =====
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ===== Carousel =====
-  const track = document.getElementById('track');
-  const slides = Array.from(track.children);
-  const dotsEl = document.getElementById('dots');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const carousel = document.getElementById('carousel');
-
-  let index = 0;
-  let timer = null;
-  const AUTOPLAY_MS = 4500;
-
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.type = 'button';
-    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    d.addEventListener('click', () => goTo(i, true));
-    dotsEl.appendChild(d);
-  });
-  const dots = Array.from(dotsEl.children);
-
-  function update(){
-    track.style.transform = 'translateX(' + (-index * 100) + '%)';
-    dots.forEach((d,i)=> d.classList.toggle('active', i === index));
-  }
-
-  function goTo(i, userAction){
-    index = (i + slides.length) % slides.length;
-    update();
-    if (userAction) restartAutoplay();
-  }
-  function next(userAction){ goTo(index + 1, userAction); }
-  function prev(userAction){ goTo(index - 1, userAction); }
-
-  prevBtn.addEventListener('click', () => prev(true));
-  nextBtn.addEventListener('click', () => next(true));
-
-  // Swipe
-  let startX = 0, dx = 0, dragging = false;
-  carousel.addEventListener('touchstart', (e)=>{
-    if (!e.touches || !e.touches[0]) return;
-    dragging = true;
-    startX = e.touches[0].clientX;
-    dx = 0;
-    stopAutoplay();
-  }, {passive:true});
-  carousel.addEventListener('touchmove', (e)=>{
-    if (!dragging || !e.touches || !e.touches[0]) return;
-    dx = e.touches[0].clientX - startX;
-  }, {passive:true});
-  carousel.addEventListener('touchend', ()=>{
-    if (!dragging) return;
-    dragging = false;
-    if (Math.abs(dx) > 40){
-      dx < 0 ? next(true) : prev(true);
-    } else {
-      restartAutoplay();
-    }
-  });
-
-  function startAutoplay(){
-    if (timer) return;
-    timer = setInterval(()=> next(false), AUTOPLAY_MS);
-  }
-  function stopAutoplay(){
-    clearInterval(timer);
-    timer = null;
-  }
-  function restartAutoplay(){
-    stopAutoplay();
-    startAutoplay();
-  }
-  carousel.addEventListener('mouseenter', stopAutoplay);
-  carousel.addEventListener('mouseleave', startAutoplay);
-
-  update();
-  startAutoplay();
-
-  // If any external image fails, replace it with a built-in SVG placeholder (so never breaks).
-  function svgFallback(text){
-    const safe = encodeURIComponent(text || "Image unavailable");
-    return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2400' height='1350' viewBox='0 0 2400 1350'%3E%3Cdefs%3E%3CradialGradient id='g1' cx='30%25' cy='20%25' r='80%25'%3E%3Cstop offset='0' stop-color='%236d5bff' stop-opacity='.55'/%3E%3Cstop offset='.55' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='g2' cx='80%25' cy='25%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23ff2bd6' stop-opacity='.45'/%3E%3Cstop offset='.6' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='g3' cx='55%25' cy='100%25' r='75%25'%3E%3Cstop offset='0' stop-color='%2300e5ff' stop-opacity='.35'/%3E%3Cstop offset='.65' stop-color='%23000' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='bg' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23050916'/%3E%3Cstop offset='1' stop-color='%23070b16'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='2400' height='1350' fill='url(%23bg)'/%3E%3Crect width='2400' height='1350' fill='url(%23g1)'/%3E%3Crect width='2400' height='1350' fill='url(%23g2)'/%3E%3Crect width='2400' height='1350' fill='url(%23g3)'/%3E%3Ctext x='120' y='200' fill='%23e9eefc' font-family='Arial' font-size='64' font-weight='800'%3E"+safe+"%3C/text%3E%3Ctext x='120' y='270' fill='%239fb0d0' font-family='Arial' font-size='30'%3EAlways loads (built-in)%3C/text%3E%3C/svg%3E";
-  }
-
-  const imgs = document.querySelectorAll("img");
-  imgs.forEach(img=>{
-    img.addEventListener("error", ()=>{
-      img.src = svgFallback("Tech image");
-    }, {once:true});
-  });
-
-  // ===== Language toggle (EN default + PT option) =====
-  const langBtn = document.getElementById('langBtn');
-  const langLabel = document.getElementById('langLabel');
-
-  const t = {
-    en: {
-      kicker: "⚡ Fast • Reliable • Simple",
-      headline: "Internet, Mobile, and TV Streaming — all in one place.",
-      sub: "Connect faster, game smoother, and stream without buffering — with plans built for modern life.",
-      chip1:"Gaming-ready latency", chip2:"Strong Wi-Fi coverage", chip3:"Simple activation",
-      plansTitle:"Internet, Mobile, and TV Streaming — all in one place.",
-      plansDesc:"One simple solution to connect your home and your phone — with reliable speed.",
-      plansPrice:"Plans from $39.99",
-      plansKicker:"💎 Simple Plans",
-      plansH2:"Choose the plan that fits your life",
-      plansSub:"Fast installation guidance, clear options, and a clean experience from start to finish.",
-      b1t:"Internet:", b1d:"strong Wi-Fi for the whole home.",
-      b2t:"Mobile:", b2d:"lines + devices to stay connected anywhere.",
-      b3t:"TV Streaming:", b3d:"watch your favorite content smoothly.",
-      b4t:"From $39.99:", b4d:"ask about deals and availability.",
-      cta3:"Call to get your plan",
-      foot:"Fast connectivity for modern life."
-    },
-    pt: {
-      kicker: "⚡ Rápido • Confiável • Simples",
-      headline: "Internet, celular e TV streaming — tudo em um único lugar.",
-      sub: "Conecte mais rápido, jogue sem lag e assista sem travar — com planos feitos para o dia a dia.",
-      chip1:"Baixa latência para games", chip2:"Wi-Fi forte em casa", chip3:"Ativação simples",
-      plansTitle:"Internet, celular e TV streaming — tudo em um único lugar.",
-      plansDesc:"Uma solução simples para conectar sua casa e seu celular — com velocidade confiável.",
-      plansPrice:"Planos a partir de $39.99",
-      plansKicker:"💎 Planos simples",
-      plansH2:"Escolha o plano ideal para você",
-      plansSub:"Orientação rápida, opções claras e uma experiência sem complicação.",
-      b1t:"Internet:", b1d:"Wi-Fi forte para a casa toda.",
-      b2t:"Celular:", b2d:"linhas + aparelhos para ficar conectado em qualquer lugar.",
-      b3t:"TV Streaming:", b3d:"assista seus conteúdos sem travar.",
-      b4t:"A partir de $39.99:", b4d:"pergunte sobre ofertas e disponibilidade.",
-      cta3:"Ligue e escolha seu plano",
-      foot:"Conexão rápida para a vida moderna."
-    }
-  };
-
-  let lang = "en";
-  function applyLang(){
-    const L = t[lang];
-    langLabel.textContent = lang.toUpperCase();
-    document.getElementById('kicker').textContent = L.kicker;
-    document.getElementById('headline').textContent = L.headline;
-    document.getElementById('sub').textContent = L.sub;
-    document.getElementById('chip1').textContent = L.chip1;
-    document.getElementById('chip2').textContent = L.chip2;
-    document.getElementById('chip3').textContent = L.chip3;
-
-    document.getElementById('plansTitle').textContent = L.plansTitle;
-    document.getElementById('plansDesc').textContent = L.plansDesc;
-    document.getElementById('plansPrice').textContent = L.plansPrice;
-    document.getElementById('plansKicker').textContent = L.plansKicker;
-    document.getElementById('plansH2').textContent = L.plansH2;
-    document.getElementById('plansSub').textContent = L.plansSub;
-
-    document.getElementById('b1t').textContent = L.b1t;
-    document.getElementById('b1d').textContent = L.b1d;
-    document.getElementById('b2t').textContent = L.b2t;
-    document.getElementById('b2d').textContent = L.b2d;
-    document.getElementById('b3t').textContent = L.b3t;
-    document.getElementById('b3d').textContent = L.b3d;
-    document.getElementById('b4t').textContent = L.b4t;
-    document.getElementById('b4d').textContent = L.b4d;
-
-    document.getElementById('cta3').textContent = L.cta3;
-    document.getElementById('footTxt').textContent = L.foot;
-  }
-  applyLang();
-
-  langBtn.addEventListener('click', ()=>{
-    lang = (lang === "en") ? "pt" : "en";
-    applyLang();
-  });
-})();
+const slides=document.querySelectorAll('.slide');
+let i=0;
+setInterval(()=>{
+  slides[i].classList.remove('active');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+},5000);
 </script>
+
 </body>
 </html>
