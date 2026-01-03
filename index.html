@@ -1,663 +1,227 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Grupo CS7 | Internet, Mobile Lines & Devices</title>
-  <meta name="description" content="Grupo CS7 — Internet plans, mobile lines, and devices in the United States. Call 301-263-5865." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS7 Telecom | Connectivity Marketplace</title>
 
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <style>
-    :root{
-      --bg:#070A12;
-      --bg2:#0B1220;
-      --card:#0F1A33;
-      --text:#EAF0FF;
-      --muted:#A7B0C5;
-      --line:rgba(255,255,255,.10);
-      --brand:#FF7A18;      /* laranja */
-      --brand2:#5B78FF;     /* azul */
-      --shadow: 0 24px 80px rgba(0,0,0,.55);
-      --radius: 18px;
-      --max: 1120px;
-    }
+<style>
+:root{
+  --orange:#f47c20;
+  --blue:#0b2c4d;
+  --dark:#071b2e;
+  --glass:rgba(255,255,255,.08);
+}
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 0%, rgba(91,120,255,.18), transparent 60%),
-                  radial-gradient(900px 700px at 80% 20%, rgba(255,122,24,.16), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
-      color:var(--text);
-      overflow-x:hidden;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+body{
+  background:linear-gradient(135deg,var(--blue),var(--dark));
+  color:#fff;
+}
 
-    /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(7,10,18,.65);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      height:74px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
-    .brand img{
-      height:40px; width:auto; display:block;
-      border-radius:10px;
-      background: rgba(255,255,255,.06);
-      padding:6px;
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .brand .name{
-      display:flex; flex-direction:column; line-height:1.05;
-    }
-    .brand .name strong{font-size:14px; letter-spacing:.3px}
-    .brand .name span{font-size:12px; color:var(--muted)}
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(0,0,0,.45);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    .nav{
-      display:flex; gap:18px; align-items:center;
-    }
-    .nav a{
-      font-size:14px; color:var(--muted);
-      padding:10px 10px;
-      border-radius:12px;
-    }
-    .nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .nav a.active{color:var(--text); background:rgba(255,255,255,.07)}
+.logo{height:56px}
 
-    .actions{display:flex; gap:10px; align-items:center}
-    .btn{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding:10px 12px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight:700;
-      font-size:13px;
-    }
-    .btn:hover{background: rgba(255,255,255,.10)}
-    .btn.primary{
-      border:1px solid rgba(255,122,24,.35);
-      background: linear-gradient(135deg, rgba(255,122,24,.22), rgba(91,120,255,.18));
-      box-shadow: 0 12px 35px rgba(0,0,0,.25);
-    }
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 16px;
+  font-weight:600;
+}
 
-    /* Hero / Carousel */
-    .hero{padding:22px 0 0}
-    .carousel{
-      position:relative;
-      border-radius: 26px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      min-height: 520px;
-      background: rgba(255,255,255,.04);
-    }
-    .slides{position:absolute; inset:0}
-    .slide{
-      position:absolute; inset:0;
-      opacity:0; transform: scale(1.02);
-      transition: opacity .8s ease, transform 1.2s ease;
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.12) brightness(1.02);
-    }
-    .slide.active{opacity:1; transform: scale(1.0)}
-    .overlay{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(1000px 600px at 20% 20%, rgba(11,18,32,.30), rgba(11,18,32,.78) 60%),
-        linear-gradient(90deg, rgba(7,10,18,.92), rgba(7,10,18,.25));
-    }
-    .hero-content{
-      position:relative;
-      padding:54px 22px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-      .carousel{min-height: 640px}
-    }
+nav a:hover{color:var(--orange)}
 
-    .headline{
-      font-size: 44px;
-      line-height: 1.05;
-      margin: 0 0 10px;
-      letter-spacing: -0.5px;
-    }
-    .accent{
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      -webkit-background-clip:text; background-clip:text;
-      color: transparent;
-    }
-    .sub{
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.55;
-      max-width: 58ch;
-      margin: 0 0 18px;
-    }
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      padding:10px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .pill b{color:var(--text)}
+/* CAROUSEL */
+.carousel{
+  height:560px;
+  position:relative;
+  overflow:hidden;
+}
 
-    .card{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 20px;
-      padding:16px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    .card h3{margin:0 0 6px; font-size:14px}
-    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.5}
-    .card .price{
-      margin-top:12px;
-      font-size:38px;
-      font-weight:900;
-      letter-spacing:-.8px;
-    }
-    .card .price small{font-size:14px; color:var(--muted); font-weight:700}
-    .mini{
-      display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;
-    }
-    @media (max-width: 520px){ .mini{grid-template-columns:1fr} }
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
 
-    .dots{
-      position:absolute; left:0; right:0; bottom:12px;
-      display:flex; justify-content:center; gap:8px;
-      z-index:5;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: rgba(255,255,255,.30);
-      border:1px solid rgba(255,255,255,.22);
-      cursor:pointer;
-    }
-    .dot.active{
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      border-color: rgba(255,255,255,.28);
-      transform: scale(1.15);
-    }
+.slide.active{opacity:1}
 
-    /* Sections */
-    section{padding:54px 0}
-    .section-title{
-      margin:0 0 10px;
-      font-size: 26px;
-      letter-spacing:-.2px;
-    }
-    .section-sub{margin:0 0 18px; color:var(--muted); line-height:1.55}
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
+.carousel-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 80px;
+}
 
-    .feat{
-      padding:18px;
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .feat b{display:block; margin-bottom:6px}
-    .feat span{color:var(--muted); font-size:14px; line-height:1.55}
+.carousel-overlay h1{
+  font-size:52px;
+  color:var(--orange);
+  max-width:750px;
+}
 
-    /* Operators */
-    .ops{
-      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
-      margin-top:12px;
-    }
-    .op{
-      height:46px; padding:0 14px;
-      display:flex; align-items:center; justify-content:center;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight:800;
-      letter-spacing:.2px;
-      font-size:13px;
-    }
+.carousel-overlay p{
+  font-size:22px;
+  max-width:700px;
+  margin-top:15px;
+}
 
-    /* Contact */
-    .contact-card{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 860px){ .contact-card{grid-template-columns:1fr} }
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-    }
-    .field input, .field textarea{
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding:12px 12px;
-      outline:none;
-      font-size:14px;
-    }
-    .field textarea{min-height:110px; resize:vertical}
-    .note{color:var(--muted); font-size:13px; line-height:1.5}
+/* SECTIONS */
+section{
+  padding:90px 50px;
+  text-align:center;
+}
 
-    footer{
-      border-top:1px solid var(--line);
-      padding:22px 0;
-      color: var(--muted);
-      font-size:13px;
-    }
-    .footer-row{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-  </style>
+h2{
+  font-size:38px;
+  color:var(--orange);
+  margin-bottom:20px;
+}
+
+/* OPERATORS */
+.operators img{
+  height:55px;
+  margin:25px;
+  filter:brightness(0) invert(1);
+}
+
+/* TESTIMONIALS */
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+
+.card{
+  background:var(--glass);
+  padding:30px;
+  border-radius:20px;
+}
+
+.card img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+  background:#050f1a;
+  padding:50px;
+  text-align:center;
+  font-size:15px;
+}
+</style>
 </head>
 
 <body>
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#home" aria-label="Grupo CS7 Home">
-        <!-- LOGO: está usando seu arquivo atual com espaço (%20). Se renomear pra logo.png, troque aqui -->
-        <img src="CS7%20Telecom_Logo_21052017.png" alt="Grupo CS7 logo" />
-        <div class="name">
-          <strong>GRUPO CS7</strong>
-          <span>Internet • Mobile Lines • Devices</span>
-        </div>
-      </a>
 
-      <nav class="nav" id="nav">
-        <a href="#plans" class="navlink">Plans</a>
-        <a href="#services" class="navlink">Services</a>
-        <a href="#coverage" class="navlink">Coverage</a>
-        <a href="#contact" class="navlink">Contact</a>
-      </nav>
+<header>
+  <img src="assets/img/logo.png" class="logo" alt="CS7 Telecom">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#plans">Plans</a>
+    <a href="#mission">Mission</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-      <div class="actions">
-        <button class="btn" id="langBtn" type="button">PT</button>
-        <a class="btn primary" href="tel:3012635865">Call 301-263-5865</a>
-      </div>
+<!-- CAROUSEL -->
+<div class="carousel" id="home">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1543269865-cbf427effbad')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1603575448360-153f093fd0b2')"></div>
+
+  <div class="carousel-overlay">
+    <h1>Connecting Families, Homes and Businesses</h1>
+    <p>Internet, TV and mobile solutions from the top U.S. carriers — all in one place.</p>
+  </div>
+</div>
+
+<section id="plans">
+  <h2>Our Partner Carriers</h2>
+  <div class="operators">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/AT%26T_logo_2016.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/T-Mobile_logo_2020.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Verizon_2015_logo.svg">
+  </div>
+</section>
+
+<section id="mission">
+  <h2>Our Mission</h2>
+  <p style="max-width:900px;margin:auto;font-size:18px;">
+    CS7 Telecom was born from the need of entrepreneurs and families searching for a
+    connectivity marketplace. Our mission is to bring together the top U.S. carriers
+    in one place, allowing customers to compare, choose and activate internet, mobile
+    and TV services with just one click — simple, transparent and efficient.
+  </p>
+</section>
+
+<section>
+  <h2>What Our Customers Say</h2>
+  <div class="testimonials">
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg">
+      <strong>Michael R.</strong>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Excellent service. Everything was fast and clear. I would definitely recommend CS7 Telecom.</p>
+    </div>
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+      <strong>Jessica L.</strong>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>They helped my family find the perfect internet and mobile plan. Great support!</p>
+    </div>
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/men/55.jpg">
+      <strong>Daniel M.</strong>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Professional, friendly and reliable. I already recommended them to friends.</p>
     </div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <div class="hero" id="home">
-    <div class="wrap">
-      <div class="carousel" aria-label="Grupo CS7 carousel">
-        <div class="slides" id="slides">
-          <!-- Imagens felizes: pessoas usando internet/celular/família/TV -->
-          <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2200&q=80');"></div>
-          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=2200&q=80');"></div>
-          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1529336953121-a0d0c2e98f62?auto=format&fit=crop&w=2200&q=80');"></div>
-        </div>
+<footer id="contact">
+  <p><strong>CS7 Telecom</strong></p>
+  <p>📍 Maryland – United States</p>
+  <p>📞 <a href="tel:+13012635865" style="color:#f47c20;text-decoration:none;">(301) 263-5865</a></p>
+  <p>✉️ <a href="mailto:contato@grupocs7.com" style="color:#f47c20;text-decoration:none;">contato@grupocs7.com</a></p>
+  <p style="margin-top:15px;font-size:14px;">
+    Independent connectivity marketplace representing major U.S. carriers.
+  </p>
+  <p>© 2026 CS7 Telecom. All rights reserved.</p>
+</footer>
 
-        <div class="overlay"></div>
+<script>
+let slides=document.querySelectorAll('.slide');
+let i=0;
+setInterval(()=>{
+  slides[i].classList.remove('active');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+},4500);
+</script>
 
-        <div class="hero-content">
-          <div class="hero-grid">
-            <div>
-              <div class="pill" id="heroPill">
-                <span>Fast setup • Easy sign-up</span> <b>USA</b>
-              </div>
-
-              <h1 class="headline" id="heroTitle">
-                Stay connected with <span class="accent">fast Internet</span> and mobile plans.
-              </h1>
-
-              <p class="sub" id="heroSub">
-                We help you get reliable home internet, mobile lines, and devices — with friendly support and simple options.
-              </p>
-
-              <div class="cta-row">
-                <a class="btn primary" href="#plans" id="btnPlans">View Plans</a>
-                <a class="btn" href="#contact" id="btnQuote">Request a Quote</a>
-              </div>
-
-              <div class="mini">
-                <div class="card">
-                  <h3 id="card1Title">Popular Internet</h3>
-                  <p id="card1Sub">Strong Wi-Fi coverage for streaming, work, and family devices.</p>
-                  <div class="price"><span class="accent">1 Giga</span> <small>/ from</small></div>
-                  <p class="note" id="card1Note">Call to check availability in your area.</p>
-                </div>
-
-                <div class="card">
-                  <h3 id="card2Title">Mobile Lines</h3>
-                  <p id="card2Sub">Plans that fit your budget — keep your number or get a new one.</p>
-                  <div class="ops" aria-label="Operators">
-                    <div class="op">Xfinity</div>
-                    <div class="op">Verizon</div>
-                    <div class="op">Spectrum</div>
-                    <div class="op">AT&amp;T</div>
-                  </div>
-                  <p class="note" style="margin-top:10px" id="card2Note">We help you choose the best option.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <h3 id="quickTitle">Quick Contact</h3>
-              <p id="quickSub">Talk to a specialist now.</p>
-              <div class="price"><span class="accent">301-263-5865</span></div>
-              <p class="note" id="quickNote">Clayton Sanches • Grupo CS7</p>
-              <div class="cta-row" style="margin-top:12px">
-                <a class="btn primary" href="tel:3012635865" id="btnCall">Call now</a>
-                <a class="btn" href="#contact" id="btnMsg">Send a message</a>
-              </div>
-              <p class="note" style="margin-top:10px" id="quickFine">
-                Availability and pricing depend on your address and coverage.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="dots" id="dots" aria-label="Carousel navigation">
-          <div class="dot active" data-i="0"></div>
-          <div class="dot" data-i="1"></div>
-          <div class="dot" data-i="2"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PLANS -->
-  <section id="plans">
-    <div class="wrap">
-      <h2 class="section-title" id="plansTitle">Plans that match your lifestyle</h2>
-      <p class="section-sub" id="plansSub">Streaming, gaming, work-from-home, and family use — we’ll help you pick the right speed.</p>
-
-      <div class="grid3">
-        <div class="feat">
-          <b id="p1Title">Everyday Internet</b>
-          <span id="p1Sub">Great for browsing, social media, school, and standard streaming.</span>
-        </div>
-        <div class="feat">
-          <b id="p2Title">High-Speed Internet</b>
-          <span id="p2Sub">Smooth video calls, fast downloads, multiple devices online at once.</span>
-        </div>
-        <div class="feat">
-          <b id="p3Title">1 Giga Experience</b>
-          <span id="p3Sub">Best for heavy streaming, gamers, smart homes, and large families.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="wrap">
-      <h2 class="section-title" id="servicesTitle">Services</h2>
-      <p class="section-sub" id="servicesSub">Internet, mobile, and devices — everything in one place.</p>
-
-      <div class="grid3">
-        <div class="feat">
-          <b id="s1Title">Home Internet</b>
-          <span id="s1Sub">Strong Wi-Fi options for apartments and houses.</span>
-        </div>
-        <div class="feat">
-          <b id="s2Title">Mobile Lines</b>
-          <span id="s2Sub">Keep your number, easy activation, and helpful guidance.</span>
-        </div>
-        <div class="feat">
-          <b id="s3Title">Phones & Devices</b>
-          <span id="s3Sub">We help you choose devices that fit your needs and budget.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COVERAGE -->
-  <section id="coverage">
-    <div class="wrap">
-      <h2 class="section-title" id="covTitle">Coverage check</h2>
-      <p class="section-sub" id="covSub">Send your ZIP code and address — we’ll confirm availability and the best options for you.</p>
-
-      <div class="card">
-        <p class="note" id="covNote">
-          Tip: If you already know your operator preference (Xfinity / Verizon / Spectrum / AT&amp;T), include it in your message.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <h2 class="section-title" id="contactTitle">Contact</h2>
-      <p class="section-sub" id="contactSub">Fill the form and we’ll get back to you quickly.</p>
-
-      <div class="contact-card">
-        <div class="card">
-          <div class="field">
-            <label for="name" id="fName">Name</label>
-            <input id="name" placeholder="Your name" />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label for="phone" id="fPhone">Phone</label>
-            <input id="phone" placeholder="Your phone number" />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label for="msg" id="fMsg">Message</label>
-            <textarea id="msg" placeholder="ZIP code + address + what you need (internet / mobile / devices)"></textarea>
-          </div>
-
-          <div class="cta-row" style="margin-top:12px">
-            <button class="btn primary" type="button" id="sendBtn">Copy message</button>
-            <a class="btn" href="tel:3012635865" id="callBtn">Call</a>
-          </div>
-
-          <p class="note" style="margin-top:10px" id="copyNote">
-            The button copies your message so you can paste it into SMS/WhatsApp/email.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 8px" id="rightTitle">Direct</h3>
-          <p class="note" id="rightSub">Grupo CS7 • Clayton Sanches</p>
-          <p style="margin:14px 0 0; font-weight:900; font-size:22px">
-            <span class="accent">301-263-5865</span>
-          </p>
-          <p class="note" style="margin-top:8px" id="rightFine">
-            Business hours may vary. Leave a message with your ZIP code and address.
-          </p>
-          <div class="ops" style="margin-top:14px">
-            <div class="op">Xfinity</div>
-            <div class="op">Verizon</div>
-            <div class="op">Spectrum</div>
-            <div class="op">AT&amp;T</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap footer-row">
-      <div>© <span id="year"></span> Grupo CS7</div>
-      <div id="footerNote">Internet • Mobile Lines • Devices • USA</div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Smooth scroll + active nav
-    const navLinks = [...document.querySelectorAll(".navlink")];
-    navLinks.forEach(a=>{
-      a.addEventListener("click", (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute("href");
-        document.querySelector(id).scrollIntoView({behavior:"smooth", block:"start"});
-      });
-    });
-
-    const sections = ["#plans","#services","#coverage","#contact"].map(s=>document.querySelector(s));
-    const onScroll = () => {
-      const y = window.scrollY + 110;
-      let current = "#plans";
-      sections.forEach(sec=>{
-        if(sec && sec.offsetTop <= y) current = "#" + sec.id;
-      });
-      navLinks.forEach(a=>{
-        a.classList.toggle("active", a.getAttribute("href") === current);
-      });
-    };
-    window.addEventListener("scroll", onScroll); onScroll();
-
-    // Carousel
-    const slides = [...document.querySelectorAll(".slide")];
-    const dots = [...document.querySelectorAll(".dot")];
-    let idx = 0;
-    function setSlide(i){
-      idx = i;
-      slides.forEach((s,k)=>s.classList.toggle("active", k===idx));
-      dots.forEach((d,k)=>d.classList.toggle("active", k===idx));
-    }
-    dots.forEach(d=>{
-      d.addEventListener("click", ()=> setSlide(parseInt(d.dataset.i,10)));
-    });
-    setInterval(()=> setSlide((idx+1)%slides.length), 5200);
-
-    // Copy message
-    document.getElementById("sendBtn").addEventListener("click", async ()=>{
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const msg = document.getElementById("msg").value.trim();
-      const text = `Name: ${name}\nPhone: ${phone}\nMessage: ${msg}\n\n— Sent from Grupo CS7 website`;
-      try{
-        await navigator.clipboard.writeText(text);
-        alert("Copied! Now paste it into WhatsApp/SMS/email.");
-      }catch(e){
-        alert("Could not copy automatically. Please copy manually.");
-      }
-    });
-
-    // Language toggle (EN default, PT secondary)
-    let lang = "en";
-    const dict = {
-      en: {
-        heroTitle: 'Stay connected with <span class="accent">fast Internet</span> and mobile plans.',
-        heroSub: "We help you get reliable home internet, mobile lines, and devices — with friendly support and simple options.",
-        btnPlans: "View Plans",
-        btnQuote: "Request a Quote",
-        quickTitle: "Quick Contact",
-        quickSub: "Talk to a specialist now.",
-        quickNote: "Clayton Sanches • Grupo CS7",
-        quickFine: "Availability and pricing depend on your address and coverage.",
-        plansTitle:"Plans that match your lifestyle",
-        plansSub:"Streaming, gaming, work-from-home, and family use — we’ll help you pick the right speed.",
-        servicesTitle:"Services",
-        servicesSub:"Internet, mobile, and devices — everything in one place.",
-        covTitle:"Coverage check",
-        covSub:"Send your ZIP code and address — we’ll confirm availability and the best options for you.",
-        covNote:"Tip: If you already know your operator preference (Xfinity / Verizon / Spectrum / AT&T), include it in your message.",
-        contactTitle:"Contact",
-        contactSub:"Fill the form and we’ll get back to you quickly.",
-        fName:"Name",
-        fPhone:"Phone",
-        fMsg:"Message",
-        copyNote:"The button copies your message so you can paste it into SMS/WhatsApp/email.",
-        rightTitle:"Direct",
-        rightSub:"Grupo CS7 • Clayton Sanches",
-        rightFine:"Business hours may vary. Leave a message with your ZIP code and address.",
-        footerNote:"Internet • Mobile Lines • Devices • USA",
-        langBtn:"PT"
-      },
-      pt: {
-        heroTitle: 'Fique conectado com <span class="accent">internet rápida</span> e planos móveis.',
-        heroSub: "Ajudamos você com internet residencial, linhas de celular e aparelhos — com suporte simples e rápido.",
-        btnPlans: "Ver Planos",
-        btnQuote: "Pedir Cotação",
-        quickTitle: "Contato Rápido",
-        quickSub: "Fale com um especialista agora.",
-        quickNote: "Clayton Sanches • Grupo CS7",
-        quickFine: "Disponibilidade e valores dependem do seu endereço e cobertura.",
-        plansTitle:"Planos para seu estilo de vida",
-        plansSub:"Streaming, games, trabalho remoto e família — ajudamos a escolher a velocidade certa.",
-        servicesTitle:"Serviços",
-        servicesSub:"Internet, celular e aparelhos — tudo em um lugar.",
-        covTitle:"Consulta de cobertura",
-        covSub:"Envie seu ZIP code e endereço — confirmamos disponibilidade e a melhor opção.",
-        covNote:"Dica: se você já tem preferência (Xfinity / Verizon / Spectrum / AT&T), coloque na mensagem.",
-        contactTitle:"Contato",
-        contactSub:"Preencha e retornamos rapidamente.",
-        fName:"Nome",
-        fPhone:"Telefone",
-        fMsg:"Mensagem",
-        copyNote:"O botão copia sua mensagem para colar no WhatsApp/SMS/e-mail.",
-        rightTitle:"Direto",
-        rightSub:"Grupo CS7 • Clayton Sanches",
-        rightFine:"Horários podem variar. Deixe mensagem com ZIP code e endereço.",
-        footerNote:"Internet • Linhas • Aparelhos • EUA",
-        langBtn:"EN"
-      }
-    };
-
-    function applyLang(l){
-      document.getElementById("heroTitle").innerHTML = dict[l].heroTitle;
-      document.getElementById("heroSub").textContent = dict[l].heroSub;
-      document.getElementById("btnPlans").textContent = dict[l].btnPlans;
-      document.getElementById("btnQuote").textContent = dict[l].btnQuote;
-      document.getElementById("quickTitle").textContent = dict[l].quickTitle;
-      document.getElementById("quickSub").textContent = dict[l].quickSub;
-      document.getElementById("quickNote").textContent = dict[l].quickNote;
-      document.getElementById("quickFine").textContent = dict[l].quickFine;
-
-      document.getElementById("plansTitle").textContent = dict[l].plansTitle;
-      document.getElementById("plansSub").textContent = dict[l].plansSub;
-
-      document.getElementById("servicesTitle").textContent = dict[l].servicesTitle;
-      document.getElementById("servicesSub").textContent = dict[l].servicesSub;
-
-      document.getElementById("covTitle").textContent = dict[l].covTitle;
-      document.getElementById("covSub").textContent = dict[l].covSub;
-      document.getElementById("covNote").textContent = dict[l].covNote;
-
-      document.getElementById("contactTitle").textContent = dict[l].contactTitle;
-      document.getElementById("contactSub").textContent = dict[l].contactSub;
-      document.getElementById("fName").textContent = dict[l].fName;
-      document.getElementById("fPhone").textContent = dict[l].fPhone;
-      document.getElementById("fMsg").textContent = dict[l].fMsg;
-      document.getElementById("copyNote").textContent = dict[l].copyNote;
-
-      document.getElementById("rightTitle").textContent = dict[l].rightTitle;
-      document.getElementById("rightSub").textContent = dict[l].rightSub;
-      document.getElementById("rightFine").textContent = dict[l].rightFine;
-
-      document.getElementById("footerNote").textContent = dict[l].footerNote;
-      document.getElementById("langBtn").textContent = dict[l].langBtn;
-    }
-
-    document.getElementById("langBtn").addEventListener("click", ()=>{
-      lang = (lang === "en") ? "pt" : "en";
-      applyLang(lang);
-    });
-
-    applyLang("en");
-  </script>
 </body>
 </html>
