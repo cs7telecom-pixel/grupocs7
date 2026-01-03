@@ -89,6 +89,7 @@
       background: rgba(255,255,255,.06);
       color:var(--text);
       font-size:13px;
+      white-space:nowrap;
     }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -98,4 +99,750 @@
       border:1px solid rgba(255,255,255,.16);
       background: linear-gradient(135deg, rgba(255,122,24,.18), rgba(91,120,255,.14));
       box-shadow: 0 12px 30px rgba(0,0,0,.25);
-      cursor:poi
+      cursor:pointer;
+      font-weight:800;
+      font-size:13px;
+    }
+    .btn:hover{border-color: rgba(255,122,24,.55)}
+    .btn:active{transform: translateY(1px)}
+    .btn-outline{
+      background: rgba(255,255,255,.06);
+      box-shadow:none;
+      font-weight:800;
+    }
+
+    /* Mobile */
+    .hamburger{
+      display:none;
+      width:44px;height:44px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+    }
+    .hamburger span{
+      display:block; width:18px; height:2px; background:var(--text);
+      margin:0 auto; position:relative;
+    }
+    .hamburger span:before,.hamburger span:after{
+      content:""; position:absolute; left:0; width:18px; height:2px; background:var(--text);
+    }
+    .hamburger span:before{top:-6px}
+    .hamburger span:after{top:6px}
+
+    .mobile-drawer{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:12px 0 18px;
+    }
+    .mobile-drawer a{
+      display:block;
+      padding:12px 10px;
+      border-radius:14px;
+      color:var(--muted);
+    }
+    .mobile-drawer a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .mobile-actions{
+      display:flex; gap:10px; margin-top:8px;
+    }
+
+    /* Hero Carousel */
+    .hero{ padding:18px 0 0; }
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.05);
+      min-height: 520px;
+    }
+    .slide{
+      position:absolute; inset:0;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity .8s ease, transform 1.2s ease;
+    }
+    .slide.active{ opacity:1; transform: scale(1); }
+    .slide img{
+      width:100%; height:100%;
+      object-fit:cover;
+      filter: brightness(1.06) saturate(1.22);
+    }
+    .overlay{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(11,18,32,.92) 0%, rgba(11,18,32,.65) 45%, rgba(11,18,32,.20) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.58) 100%);
+      display:flex;
+      align-items:center;
+    }
+    .hero-inner{
+      padding:42px 22px;
+      max-width: 720px;
+    }
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-size:12px;
+    }
+    .kicker b{color:var(--text)}
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.5px;
+    }
+    h1 .accent{color:var(--brand)}
+    .lead{
+      margin:0 0 18px;
+      color: rgba(232,237,246,.92);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 60ch;
+    }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+    .cta-primary{
+      background: linear-gradient(135deg, rgba(255,122,24,.85), rgba(255,122,24,.35));
+      border-color: rgba(255,122,24,.65);
+    }
+    .cta-primary:hover{filter:brightness(1.05)}
+    .trust{ margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:13px; }
+    .dot{ width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.35); margin-top:6px; }
+
+    .carousel-controls{
+      position:absolute; bottom:14px; left:14px; right:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .dots{
+      display:flex; gap:8px;
+      background: rgba(11,18,32,.55);
+      border:1px solid rgba(255,255,255,.14);
+      padding:10px 12px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+    }
+    .dots button{
+      width:10px;height:10px;border-radius:99px;
+      border:0; cursor:pointer;
+      background: rgba(255,255,255,.30);
+    }
+    .dots button.active{background: var(--brand)}
+    .arrows{ display:flex; gap:8px; }
+    .iconbtn{
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(11,18,32,.55);
+      color:var(--text);
+      cursor:pointer;
+      backdrop-filter: blur(10px);
+      font-size:18px;
+      line-height:0;
+    }
+    .iconbtn:hover{border-color: rgba(255,122,24,.55)}
+
+    /* Sections */
+    section{padding:78px 0}
+    .section-title{ text-align:center; margin-bottom: 26px; }
+    .section-title h2{ margin:0; font-size:34px; letter-spacing:-.3px; }
+    .section-title p{
+      margin:10px auto 0;
+      max-width: 68ch;
+      color: var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .card{
+      grid-column: span 4;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      padding:18px;
+    }
+    .card h3{margin:10px 0 6px}
+    .card p{margin:0; color:var(--muted); line-height:1.55; font-size:14px}
+    .badge{
+      display:inline-flex;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,122,24,.12);
+      border:1px solid rgba(255,122,24,.25);
+      color: rgba(255,255,255,.92);
+      font-weight:900;
+      font-size:12px;
+    }
+
+    .plans{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+      margin-top: 18px;
+    }
+    .plan{
+      grid-column: span 4;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+    .plan:before{
+      content:"";
+      position:absolute; inset:-60px -60px auto auto;
+      width:140px; height:140px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,122,24,.40), transparent 60%);
+      opacity:.85;
+    }
+    .plan h3{margin:10px 0 8px}
+    .price{ display:flex; align-items:baseline; gap:8px; margin: 10px 0 12px; }
+    .price strong{font-size:36px}
+    .price span{color:var(--muted); font-size:14px}
+    .ul{margin:0; padding:0 0 0 16px; color:var(--muted); line-height:1.7; font-size:14px}
+    .plan .btn{width:100%; margin-top:14px}
+    .featured{
+      border-color: rgba(255,122,24,.55);
+      box-shadow: 0 22px 70px rgba(255,122,24,.12), var(--shadow);
+    }
+
+    .operators{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+      margin-top: 18px;
+      opacity:.95;
+    }
+    .op{
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    .contact{
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      padding:24px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+    }
+    .contact h3{margin:0 0 8px; font-size:26px}
+    .contact p{margin:0; color:var(--muted); line-height:1.6}
+    .contact .actions{ display:flex; flex-direction:column; gap:10px; }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:22px 0;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .menu{display:none}
+      .hamburger{display:inline-flex; align-items:center; justify-content:center}
+      .right{min-width:auto}
+      h1{font-size:38px}
+      .card{grid-column: span 6}
+      .plan{grid-column: span 6}
+      .contact{grid-template-columns: 1fr}
+    }
+    @media (max-width: 620px){
+      h1{font-size:32px}
+      .carousel{min-height: 560px}
+      .hero-inner{padding:38px 18px}
+      .card{grid-column: span 12}
+      .plan{grid-column: span 12}
+      .pill{display:none}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Grupo CS7 Home">
+          <!-- IMPORTANT: put your logo file in the SAME folder as index.html and name it: logo-cs7.jpg -->
+          <img src="logo-cs7.jpg" alt="Grupo CS7 logo"
+               onerror="this.style.display='none';" />
+          <div class="name">
+            <strong>Grupo CS7</strong>
+            <span>Internet • Mobile Lines • Devices</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Primary navigation">
+          <a href="#services" data-i18n="nav.services">Services</a>
+          <a href="#plans" data-i18n="nav.plans">Plans</a>
+          <a href="#operators" data-i18n="nav.operators">Operators</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <div class="right">
+          <span class="pill" title="Call or text">📞 <b>(301) 263-5865</b></span>
+
+          <button class="btn btn-outline" id="langBtn" type="button" aria-label="Switch language">
+            EN / PT
+          </button>
+
+          <button class="hamburger" id="hamburger" type="button" aria-label="Open menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" id="drawer" aria-label="Mobile navigation">
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#plans" data-i18n="nav.plans">Plans</a>
+        <a href="#operators" data-i18n="nav.operators">Operators</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+
+        <div class="mobile-actions">
+          <a class="btn cta-primary" href="tel:+13012635865" style="flex:1" data-i18n="cta.callNow">Call now</a>
+          <a class="btn btn-outline" href="#plans" style="flex:1" data-i18n="cta.viewPlans">View plans</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO / CAROUSEL -->
+  <div id="top" class="hero">
+    <div class="container">
+      <div class="carousel" aria-label="Hero carousel">
+
+        <!-- Happy, vibrant: people using phone, family streaming, gaming -->
+        <div class="slide active">
+          <img alt="Smiling person using smartphone"
+               src="https://images.unsplash.com/photo-1520975682031-ae1f8a8a3b43?auto=format&fit=crop&w=2400&q=80" />
+        </div>
+
+        <div class="slide">
+          <img alt="Family watching TV and using Wi-Fi at home"
+               src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2400&q=80" />
+        </div>
+
+        <div class="slide">
+          <img alt="Friends playing videogame at home"
+               src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2400&q=80" />
+        </div>
+
+        <div class="overlay">
+          <div class="hero-inner">
+            <div class="kicker">
+              <b data-i18n="hero.kickerStrong">Fast. Reliable. Simple.</b>
+              <span data-i18n="hero.kickerRest">Internet + Mobile plans in the USA</span>
+            </div>
+
+            <h1>
+              <span data-i18n="hero.titleA">Stay connected</span>
+              <span class="accent" data-i18n="hero.titleB">everywhere</span>.
+            </h1>
+
+            <p class="lead" data-i18n="hero.lead">
+              Home internet, mobile lines, and devices—made easy. Friendly support and plans that fit your life.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn cta-primary" href="tel:+13012635865" data-i18n="cta.callNow">Call now</a>
+              <a class="btn btn-outline" href="#plans" data-i18n="cta.viewPlans">View plans</a>
+              <a class="btn btn-outline" href="#contact" data-i18n="cta.getQuote">Get a quote</a>
+            </div>
+
+            <div class="trust">
+              <div class="dot"></div><span data-i18n="hero.trust1">Quick setup</span>
+              <div class="dot"></div><span data-i18n="hero.trust2">Clear pricing</span>
+              <div class="dot"></div><span data-i18n="hero.trust3">Local support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <div class="dots" id="dots" aria-label="Carousel dots">
+            <button type="button" class="active" aria-label="Slide 1"></button>
+            <button type="button" aria-label="Slide 2"></button>
+            <button type="button" aria-label="Slide 3"></button>
+          </div>
+          <div class="arrows">
+            <button class="iconbtn" id="prev" type="button" aria-label="Previous slide">‹</button>
+            <button class="iconbtn" id="next" type="button" aria-label="Next slide">›</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-i18n="services.title">Everything you need to stay online</h2>
+        <p data-i18n="services.subtitle">
+          Choose internet, mobile lines, or devices. We help you pick the best option and keep it simple.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <span class="badge" data-i18n="services.card1.badge">Home Internet</span>
+          <h3 data-i18n="services.card1.title">Strong Wi-Fi for your home</h3>
+          <p data-i18n="services.card1.text">Stream, study, work and game with stable coverage.</p>
+        </div>
+
+        <div class="card">
+          <span class="badge" data-i18n="services.card2.badge">Mobile Lines</span>
+          <h3 data-i18n="services.card2.title">Plans that fit your routine</h3>
+          <p data-i18n="services.card2.text">Talk, text, and data with options for every budget.</p>
+        </div>
+
+        <div class="card">
+          <span class="badge" data-i18n="services.card3.badge">Devices</span>
+          <h3 data-i18n="services.card3.title">Phones and accessories</h3>
+          <p data-i18n="services.card3.text">Upgrade your device and get help with setup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-i18n="plans.title">Popular plans</h2>
+        <p data-i18n="plans.subtitle">
+          Example options. Call us and we’ll confirm availability and the best deal for your address.
+        </p>
+      </div>
+
+      <div class="plans">
+        <div class="plan">
+          <span class="badge" data-i18n="plans.p1.badge">Value</span>
+          <h3 data-i18n="plans.p1.title">Everyday Internet</h3>
+          <div class="price">
+            <strong>$50</strong><span data-i18n="plans.perMonth">/month</span>
+          </div>
+          <ul class="ul">
+            <li data-i18n="plans.p1.li1">Great for browsing and streaming</li>
+            <li data-i18n="plans.p1.li2">Solid Wi-Fi coverage at home</li>
+            <li data-i18n="plans.p1.li3">Fast setup support</li>
+          </ul>
+          <a class="btn btn-outline" href="#contact" data-i18n="cta.getQuote">Get a quote</a>
+        </div>
+
+        <div class="plan featured">
+          <span class="badge" data-i18n="plans.p2.badge">Best Seller</span>
+          <h3 data-i18n="plans.p2.title">1 Giga Internet</h3>
+          <div class="price">
+            <strong>$50</strong><span data-i18n="plans.perMonth">/month</span>
+          </div>
+          <ul class="ul">
+            <li data-i18n="plans.p2.li1">Perfect for multiple devices</li>
+            <li data-i18n="plans.p2.li2">Smooth streaming and gaming</li>
+            <li data-i18n="plans.p2.li3">Great home Wi-Fi experience</li>
+          </ul>
+          <a class="btn cta-primary" href="tel:+13012635865" data-i18n="cta.callNow">Call now</a>
+        </div>
+
+        <div class="plan">
+          <span class="badge" data-i18n="plans.p3.badge">Mobile</span>
+          <h3 data-i18n="plans.p3.title">Mobile Lines</h3>
+          <div class="price">
+            <strong data-i18n="plans.p3.priceStrong">Talk + Data</strong>
+          </div>
+          <ul class="ul">
+            <li data-i18n="plans.p3.li1">Options for 1 or multiple lines</li>
+            <li data-i18n="plans.p3.li2">Bring your own phone or upgrade</li>
+            <li data-i18n="plans.p3.li3">Support with activation</li>
+          </ul>
+          <a class="btn btn-outline" href="#contact" data-i18n="cta.getQuote">Get a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERATORS -->
+  <section id="operators">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-i18n="ops.title">Operators we work with</h2>
+        <p data-i18n="ops.subtitle">
+          Availability depends on your area. We’ll check coverage and recommend the best option.
+        </p>
+      </div>
+
+      <div class="operators" aria-label="Operator list">
+        <div class="op">Xfinity</div>
+        <div class="op">Verizon</div>
+        <div class="op">Spectrum</div>
+        <div class="op">AT&amp;T</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact">
+        <div>
+          <h3 data-i18n="contact.title">Talk to an expert</h3>
+          <p data-i18n="contact.text">
+            Call or text us and we’ll help you choose the best plan. Quick answers, no confusion.
+          </p>
+          <div class="trust" style="margin-top:14px">
+            <div class="dot"></div><span data-i18n="contact.b1">Coverage check</span>
+            <div class="dot"></div><span data-i18n="contact.b2">Plan comparison</span>
+            <div class="dot"></div><span data-i18n="contact.b3">Setup support</span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn cta-primary" href="tel:+13012635865">📞 (301) 263-5865</a>
+          <a class="btn btn-outline" href="#plans" data-i18n="cta.viewPlans">View plans</a>
+          <div class="pill" style="justify-content:center">
+            <b>Clayton Sanches</b> • <span data-i18n="contact.role">Business Executive</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="year"></span> Grupo CS7. <span data-i18n="footer.rights">All rights reserved.</span>
+  </div>
+
+  <script>
+    // ---------- YEAR ----------
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---------- MOBILE MENU ----------
+    const hamburger = document.getElementById("hamburger");
+    const drawer = document.getElementById("drawer");
+
+    function setDrawer(open){
+      drawer.style.display = open ? "block" : "none";
+      hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    hamburger.addEventListener("click", () => {
+      const open = drawer.style.display === "block";
+      setDrawer(!open);
+    });
+
+    // close drawer when clicking a link
+    drawer.querySelectorAll("a").forEach(a=>{
+      a.addEventListener("click", ()=> setDrawer(false));
+    });
+
+    // ---------- CAROUSEL ----------
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dotsWrap = document.getElementById("dots");
+    const dotButtons = Array.from(dotsWrap.querySelectorAll("button"));
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    let idx = 0;
+    let timer = null;
+
+    function show(i){
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s,k)=> s.classList.toggle("active", k===idx));
+      dotButtons.forEach((b,k)=> b.classList.toggle("active", k===idx));
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(()=> show(idx+1), 5200);
+    }
+    function stop(){
+      if(timer) clearInterval(timer);
+      timer = null;
+    }
+
+    dotButtons.forEach((b, i)=> b.addEventListener("click", ()=>{ show(i); start(); }));
+    prev.addEventListener("click", ()=>{ show(idx-1); start(); });
+    next.addEventListener("click", ()=>{ show(idx+1); start(); });
+
+    // Start carousel
+    start();
+
+    // Pause on hover (desktop)
+    const carousel = document.querySelector(".carousel");
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+
+    // ---------- I18N (EN/PT) ----------
+    const dict = {
+      en: {
+        "nav.services":"Services",
+        "nav.plans":"Plans",
+        "nav.operators":"Operators",
+        "nav.contact":"Contact",
+
+        "hero.kickerStrong":"Fast. Reliable. Simple.",
+        "hero.kickerRest":"Internet + Mobile plans in the USA",
+        "hero.titleA":"Stay connected",
+        "hero.titleB":"everywhere",
+        "hero.lead":"Home internet, mobile lines, and devices—made easy. Friendly support and plans that fit your life.",
+        "hero.trust1":"Quick setup",
+        "hero.trust2":"Clear pricing",
+        "hero.trust3":"Local support",
+
+        "cta.callNow":"Call now",
+        "cta.viewPlans":"View plans",
+        "cta.getQuote":"Get a quote",
+
+        "services.title":"Everything you need to stay online",
+        "services.subtitle":"Choose internet, mobile lines, or devices. We help you pick the best option and keep it simple.",
+        "services.card1.badge":"Home Internet",
+        "services.card1.title":"Strong Wi-Fi for your home",
+        "services.card1.text":"Stream, study, work and game with stable coverage.",
+        "services.card2.badge":"Mobile Lines",
+        "services.card2.title":"Plans that fit your routine",
+        "services.card2.text":"Talk, text, and data with options for every budget.",
+        "services.card3.badge":"Devices",
+        "services.card3.title":"Phones and accessories",
+        "services.card3.text":"Upgrade your device and get help with setup.",
+
+        "plans.title":"Popular plans",
+        "plans.subtitle":"Example options. Call us and we’ll confirm availability and the best deal for your address.",
+        "plans.perMonth":"/month",
+        "plans.p1.badge":"Value",
+        "plans.p1.title":"Everyday Internet",
+        "plans.p1.li1":"Great for browsing and streaming",
+        "plans.p1.li2":"Solid Wi-Fi coverage at home",
+        "plans.p1.li3":"Fast setup support",
+        "plans.p2.badge":"Best Seller",
+        "plans.p2.title":"1 Giga Internet",
+        "plans.p2.li1":"Perfect for multiple devices",
+        "plans.p2.li2":"Smooth streaming and gaming",
+        "plans.p2.li3":"Great home Wi-Fi experience",
+        "plans.p3.badge":"Mobile",
+        "plans.p3.title":"Mobile Lines",
+        "plans.p3.priceStrong":"Talk + Data",
+        "plans.p3.li1":"Options for 1 or multiple lines",
+        "plans.p3.li2":"Bring your own phone or upgrade",
+        "plans.p3.li3":"Support with activation",
+
+        "ops.title":"Operators we work with",
+        "ops.subtitle":"Availability depends on your area. We’ll check coverage and recommend the best option.",
+
+        "contact.title":"Talk to an expert",
+        "contact.text":"Call or text us and we’ll help you choose the best plan. Quick answers, no confusion.",
+        "contact.b1":"Coverage check",
+        "contact.b2":"Plan comparison",
+        "contact.b3":"Setup support",
+        "contact.role":"Business Executive",
+
+        "footer.rights":"All rights reserved."
+      },
+      pt: {
+        "nav.services":"Serviços",
+        "nav.plans":"Planos",
+        "nav.operators":"Operadoras",
+        "nav.contact":"Contato",
+
+        "hero.kickerStrong":"Rápido. Confiável. Simples.",
+        "hero.kickerRest":"Internet + Planos móveis nos EUA",
+        "hero.titleA":"Fique conectado",
+        "hero.titleB":"em qualquer lugar",
+        "hero.lead":"Internet residencial, linhas móveis e aparelhos—sem complicação. Atendimento amigável e planos que cabem no seu dia a dia.",
+        "hero.trust1":"Instalação rápida",
+        "hero.trust2":"Preço claro",
+        "hero.trust3":"Suporte local",
+
+        "cta.callNow":"Ligar agora",
+        "cta.viewPlans":"Ver planos",
+        "cta.getQuote":"Pedir orçamento",
+
+        "services.title":"Tudo para você ficar online",
+        "services.subtitle":"Escolha internet, linhas móveis ou aparelhos. A gente te ajuda a escolher o melhor e deixa tudo simples.",
+        "services.card1.badge":"Internet Residencial",
+        "services.card1.title":"Wi-Fi forte para sua casa",
+        "services.card1.text":"Assista, estude, trabalhe e jogue com estabilidade.",
+        "services.card2.badge":"Linhas Móveis",
+        "services.card2.title":"Planos que cabem na rotina",
+        "services.card2.text":"Ligações, SMS e dados para todos os bolsos.",
+        "services.card3.badge":"Aparelhos",
+        "services.card3.title":"Celulares e acessórios",
+        "services.card3.text":"Troque seu aparelho e receba ajuda na configuração.",
+
+        "plans.title":"Planos populares",
+        "plans.subtitle":"Opções de exemplo. Ligue e confirmamos disponibilidade e o melhor preço para seu endereço.",
+        "plans.perMonth":"/mês",
+        "plans.p1.badge":"Econômico",
+        "plans.p1.title":"Internet do dia a dia",
+        "plans.p1.li1":"Boa para navegar e stream",
+        "plans.p1.li2":"Cobertura Wi-Fi sólida em casa",
+        "plans.p1.li3":"Suporte para configurar",
+        "plans.p2.badge":"Mais vendido",
+        "plans.p2.title":"Internet 1 Giga",
+        "plans.p2.li1":"Perfeita para vários aparelhos",
+        "plans.p2.li2":"Stream e jogos com fluidez",
+        "plans.p2.li3":"Ótima experiência de Wi-Fi",
+        "plans.p3.badge":"Móvel",
+        "plans.p3.title":"Linhas móveis",
+        "plans.p3.priceStrong":"Voz + Dados",
+        "plans.p3.li1":"Opções para 1 ou várias linhas",
+        "plans.p3.li2":"Traga seu aparelho ou faça upgrade",
+        "plans.p3.li3":"Ajuda na ativação",
+
+        "ops.title":"Operadoras com as quais trabalhamos",
+        "ops.subtitle":"A disponibilidade depende da sua região. Verificamos cobertura e indicamos a melhor opção.",
+
+        "contact.title":"Fale com um especialista",
+        "contact.text":"Ligue ou mande mensagem e a gente te ajuda a escolher o melhor plano. Resposta rápida, sem confusão.",
+        "contact.b1":"Consulta de cobertura",
+        "contact.b2":"Comparação de planos",
+        "contact.b3":"Ajuda na configuração",
+        "contact.role":"Executivo Business",
+
+        "footer.rights":"Todos os direitos reservados."
+      }
+    };
+
+    // Load saved language (default EN)
+    let lang = localStorage.getItem("cs7_lang") || "en";
+    const langBtn = document.getElementById("langBtn");
+
+    function applyLang(){
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        const value = dict[lang] && dict[lang][key];
+        if(value) el.textContent = value;
+      });
+      langBtn.textContent = (lang === "en") ? "EN / PT" : "PT / EN";
+      localStorage.setItem("cs7_lang", lang);
+    }
+
+    langBtn.addEventListener("click", ()=>{
+      lang = (lang === "en") ? "pt" : "en";
+      applyLang();
+    });
+
+    // Apply on load
+    applyLang();
+  </script>
+
+</body>
+</html>
