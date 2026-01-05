@@ -125,3 +125,368 @@
       gap:10px;
       padding:10px 12px;
       border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color:#dbeafe;
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.4px;
+    }
+    .hero-title{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-.5px;
+      font-weight:900;
+    }
+    .hero-title .accent{ color: var(--brand); }
+    .hero-sub{
+      margin:0 0 16px;
+      color: var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 52ch;
+    }
+    .cta-row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn.primary{
+      background: linear-gradient(90deg, rgba(255,122,24,.95), rgba(91,120,255,.85));
+      border-color: rgba(255,255,255,.14);
+    }
+    .btn:hover{ filter: brightness(1.05); }
+
+    .hero-right{
+      background: linear-gradient(180deg, rgba(15,26,51,.75), rgba(15,26,51,.45));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    /* ===== Carousel (CENTRAL, NÃO background) ===== */
+    .carousel{
+      border-radius: 16px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+      position:relative;
+    }
+    .slides{
+      display:flex;
+      transition: transform .55s ease;
+      will-change: transform;
+    }
+    .slide{
+      min-width:100%;
+      position:relative;
+      aspect-ratio: 16 / 10;
+      background: #050815;
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit: cover; /* IMPORTANTE: imagem aparece dentro do card */
+      display:block;
+      filter: saturate(1.08) contrast(1.02);
+    }
+    .slide:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));
+      pointer-events:none;
+    }
+    .carousel-controls{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 10px;
+      pointer-events:none;
+    }
+    .arrow{
+      pointer-events:auto;
+      width:42px; height:42px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(11,18,32,.65);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .arrow:hover{ background: rgba(11,18,32,.88); }
+
+    .dots{
+      display:flex; gap:8px; justify-content:center;
+      padding:10px 0 0;
+    }
+    .dot{
+      width:9px; height:9px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+    .dot.active{
+      background: linear-gradient(90deg, rgba(255,122,24,.95), rgba(91,120,255,.85));
+      border-color: rgba(255,255,255,.18);
+    }
+
+    /* ===== Info cards ===== */
+    .mini-cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 520px){
+      .mini-cards{ grid-template-columns: 1fr; }
+      .hero-title{ font-size:38px; }
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .card h3{ margin:0 0 6px; font-size:15px; }
+    .card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.45; }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:28px;
+      padding:18px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <!-- Logo ÚNICO. Se quebrar, ele se esconde (sem ícone quebrado). -->
+          <img src="./logo-cs7.png" alt="GRUPO CS7" class="logo"
+               onerror="this.style.display='none';" />
+          <div>
+            <h1>GRUPO CS7</h1>
+            <p>Internet • Mobile Lines • Devices</p>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#plans">Plans</a>
+          <a href="#services">Services</a>
+          <a href="#coverage">Coverage</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="pill">GRUPO CS7 • Fast setup • Easy sign-up • USA</div>
+
+          <div class="hero-title">
+            Stay connected with <span class="accent">fast</span><br />
+            Internet and mobile plans.
+          </div>
+
+          <p class="hero-sub">
+            Reliable home internet, mobile lines, and devices — with friendly support and simple options.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#plans">View Plans</a>
+            <a class="btn" href="#contact">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <!-- CARROSSEL CENTRAL (não é background) -->
+          <div class="carousel" aria-label="Customer lifestyle carousel">
+            <div class="slides" id="slides">
+              <!-- Pessoas interagindo com internet (celular/notebook/wi-fi) -->
+              <div class="slide">
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+                  alt="People using internet on laptop"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide">
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+                  alt="Team collaborating online"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide">
+                <img
+                  src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=80"
+                  alt="Person using smartphone with fast connection"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide">
+                <img
+                  src="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=1600&q=80"
+                  alt="Family streaming and browsing online"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-hidden="false">
+              <button class="arrow" id="prev" type="button" aria-label="Previous slide">‹</button>
+              <button class="arrow" id="next" type="button" aria-label="Next slide">›</button>
+            </div>
+          </div>
+
+          <div class="dots" id="dots" aria-label="Carousel pagination"></div>
+
+          <div class="mini-cards">
+            <div class="card">
+              <h3>Popular Internet</h3>
+              <p>Strong Wi-Fi coverage for streaming, work and family devices.</p>
+            </div>
+            <div class="card">
+              <h3>Mobile Lines</h3>
+              <p>Plans that fit your budget — keep your number or get a new one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sections placeholders -->
+    <section id="plans" style="margin-top:10px;">
+      <div class="card">
+        <h3>Plans</h3>
+        <p>Edit this section with your offers (example: Internet from $39.99). Add phone/TV streaming bundles, etc.</p>
+      </div>
+    </section>
+
+    <section id="services" style="margin-top:12px;">
+      <div class="card">
+        <h3>Services</h3>
+        <p>Home Internet • Mobile Lines • Devices • Setup Support</p>
+      </div>
+    </section>
+
+    <section id="coverage" style="margin-top:12px;">
+      <div class="card">
+        <h3>Coverage</h3>
+        <p>Tell customers which areas you serve and which carriers are available.</p>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:12px;">
+      <div class="card">
+        <h3>Contact</h3>
+        <p>
+          Phone: <strong>(301) 263-5865</strong><br/>
+          Name: <strong>Clayton Sanches</strong><br/>
+          Add WhatsApp button or a contact form here.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> GRUPO CS7 — All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple carousel (no libraries)
+    const slidesEl = document.getElementById("slides");
+    const total = slidesEl.children.length;
+    const dotsEl = document.getElementById("dots");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    let index = 0;
+    let timer = null;
+
+    function renderDots(){
+      dotsEl.innerHTML = "";
+      for(let i=0; i<total; i++){
+        const d = document.createElement("button");
+        d.type = "button";
+        d.className = "dot" + (i === index ? " active" : "");
+        d.setAttribute("aria-label", "Go to slide " + (i+1));
+        d.addEventListener("click", () => goTo(i, true));
+        dotsEl.appendChild(d);
+      }
+    }
+
+    function goTo(i, userAction=false){
+      index = (i + total) % total;
+      slidesEl.style.transform = `translateX(-${index * 100}%)`;
+      renderDots();
+      if(userAction) restartAuto();
+    }
+
+    function next(){ goTo(index + 1, true); }
+    function prev(){ goTo(index - 1, true); }
+
+    function startAuto(){
+      timer = setInterval(() => goTo(index + 1), 4500);
+    }
+    function stopAuto(){
+      if(timer) clearInterval(timer);
+      timer = null;
+    }
+    function restartAuto(){
+      stopAuto(); startAuto();
+    }
+
+    prevBtn.addEventListener("click", prev);
+    nextBtn.addEventListener("click", next);
+
+    // Swipe on mobile
+    let startX = null;
+    slidesEl.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    }, {passive:true});
+    slidesEl.addEventListener("touchend", (e) => {
+      if(startX === null) return;
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      startX = null;
+      if(Math.abs(dx) > 40){
+        dx < 0 ? next() : prev();
+      }
+    }, {passive:true});
+
+    // Init
+    goTo(0);
+    startAuto();
+  </script>
+</body>
+</html>
