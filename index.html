@@ -1,16 +1,4 @@
-<header style="
-  display:flex;
-  align-items:center;
-  padding:15px 30px;
-  background:#0b1220;
-">
-  <img 
-    src="https://raw.githubusercontent.com/cs7telecom-pixel/grupocs7/main/logo.png"
-    alt="CS7 Telecom Logo"
-    style="height:55px;"
-  >
-</header> </body>
-</html>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +8,54 @@
   <meta name="description" content="Grupo CS7 — Internet plans, mobile lines, and devices in the United States. Call 301-263-5865." />
 
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <style>
+  <style>/* ====== HEADER / LOGO FIX ====== */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:#0b1220;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand-title{
+  font-weight:800;
+  letter-spacing:.5px;
+  color:#e5e7eb;
+  line-height:1.1;
+}
+
+.brand-sub{
+  color:#94a3b8;
+  font-size:14px;
+  margin-top:2px;
+}
+
+/* Logo com fundo para destacar */
+.logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  display:block;
+
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  padding:8px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  filter: brightness(1.12) contrast(1.12);
+}
+
+/* Esconde QUALQUER ícone/IMG extra no topo (ícone quebrado) */
+header img:not(.logo){
+  display:none !important;
+}
     :root{
       --bg:#070A12;
       --bg2:#0B1220;
