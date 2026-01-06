@@ -180,56 +180,8 @@
       gap:12px;
     }
 
-    /* ===== Carousel (CENTRAL, NÃO background) ===== */
-    .carousel{
-      border-radius: 16px;
-      border:1px solid var(--line);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      position:relative;
-      height: 360px;
-    }
-    .slides{
-      display:flex;
-      transition: transform .55s ease;
-      will-change: transform;
-    }
-    .slide{
-      min-width:100%;
-      position:relative;
-      slide{
-  min-width:100%;
-  position:relative;
-}slides{
-  height:100%;
-}
-
-.slide{
-  height:100%;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-      background: #050815;
-    }
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit: cover; /* IMPORTANTE: imagem aparece dentro do card */
-      display:block;
-      filter: saturate(1.08) contrast(1.02);
-    }
-    .slide:after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));
-      pointer-events:none;
-    }
-    .carousel-controls{
+    
+     
       position:absolute;
       inset:0;
       display:flex;
@@ -238,259 +190,111 @@
       padding:0 10px;
       pointer-events:none;
     }
-    .arrow{
-      pointer-events:auto;
-      width:42px; height:42px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(11,18,32,.65);
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer;
-      font-weight:900;
-    }
-    .arrow:hover{ background: rgba(11,18,32,.88); }
+    /* ===== CS7 BLOCK ONLY (Carousel + Plans) ===== */
 
-    .dots{
-      display:flex; gap:8px; justify-content:center;
-      padding:10px 0 0;
-    }
-    .dot{
-      width:9px; height:9px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.10);
-      cursor:pointer;
-    }
-    .dot.active{
-      background: linear-gradient(90deg, rgba(255,122,24,.95), rgba(91,120,255,.85));
-      border-color: rgba(255,255,255,.18);
-    }
+/* Carousel */
+.cs7-carousel{ padding: 18px 16px 12px; }
+.cs7-carousel__wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  gap: 10px;
+  align-items: center;
+}
+.cs7-carousel__viewport{
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.cs7-carousel__track{
+  display: flex;
+  transition: transform .45s ease;
+  will-change: transform;
+}
+.cs7-slide{ min-width: 100%; }
+.cs7-slide img{
+  width: 100%;
+  height: clamp(260px, 38vw, 430px);
+  object-fit: cover;
+  display: block;
+}
+.cs7-carousel__btn{
+  height: 46px; width: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+.cs7-carousel__btn:hover{ background: rgba(255,255,255,.12); }
 
-    /* ===== Info cards ===== */
-    .mini-cards{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 520px){
-      .mini-cards{ grid-template-columns: 1fr; }
-      .hero-title{ font-size:38px; }
-    }
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: 16px;
-      padding:14px;
-    }
-    .card h3{ margin:0 0 6px; font-size:15px; }
-    .card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.45; }
+.cs7-dots{
+  max-width: 1200px;
+  margin: 10px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.cs7-dot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  cursor: pointer;
+}
+.cs7-dot.is-active{
+  transform: scale(1.15);
+  background: rgba(255,122,24,.85);
+  border-color: rgba(255,122,24,.95);
+}
 
-    /* Footer */
-    footer{
-      border-top:1px solid var(--line);
-      margin-top:28px;
-      padding:18px 0;
-      color:var(--muted);
-      font-size:13px;
-    }
-  </style>
-</head>
+/* Plans */
+.cs7-plans{ padding: 50px 16px 10px; }
+.cs7-plans__grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 28px;
+  align-items: center;
+}
+.cs7-pill{
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #e5e7eb;
+}
+.cs7-plans__content{ color: #e5e7eb; }
+.cs7-plans__content h2{
+  margin: 10px 0 10px;
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1.1;
+}
+.cs7-plans__content p{ margin: 0 0 18px; color: rgba(229,231,235,.85); }
 
-<body>
-  <header>
-    <div class="container">
-      <div class="topbar">
-        <div class="brand">
-          <!-- Logo ÚNICO. Se quebrar, ele se esconde (sem ícone quebrado). -->
-          <img src="./logo-cs7.png" alt="GRUPO CS7" class="logo"
-               onerror="this.style.display='none';" />
-          <div>
-            <h1>GRUPO CS7</h1>
-            <p>Internet • Mobile Lines • Devices</p>
-          </div>
-        </div>
+.cs7-plan-cards{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.cs7-plan{
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.cs7-plan h3{ margin: 0; font-size: 18px; }
 
-        <nav>
-          <a href="#plans">Plans</a>
-          <a href="#services">Services</a>
-          <a href="#coverage">Coverage</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="pill">GRUPO CS7 • Fast setup • Easy sign-up • USA</div>
-
-          <div class="hero-title">
-            Stay connected with <span class="accent">fast</span><br />
-            Internet and mobile plans.
-          </div>
-
-          <p class="hero-sub">
-            Reliable home internet, mobile lines, and devices — with friendly support and simple options.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn primary" href="#plans">View Plans</a>
-            <a class="btn" href="#contact">Request a Quote</a>
-          </div>
-        </div>
-<div class="carousel" aria-label="Customer lifestyle carousel">
-  <div class="slides" id="slides">
-
-    <
-</div>
-        
-                <img
-                  
-                  https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80%22
-                  loading="lazy"
-                />
-              </div>
-              <div class="slide">
-                <img
-                  https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80%22
-                  loading="lazy"
-                />
-              </div>
-          
-            </div>
-
-            <div class="carousel-controls" aria-hidden="false">
-              <button class="arrow" id="prev" type="button" aria-label="Previous slide">‹</button>
-              <button class="arrow" id="next" type="button" aria-label="Next slide">›</button>
-            </div>
-          </div>
-
-          <div class="dots" id="dots" aria-label="Carousel pagination"></div>
-
-          <div class="mini-cards">
-            <div class="card">
-              <h3>Popular Internet</h3>
-              <p>Strong Wi-Fi coverage for streaming, work and family devices.</p>
-            </div>
-            <div class="card">
-              <h3>Mobile Lines</h3>
-              <p>Plans that fit your budget — keep your number or get a new one.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-<section id="plans" class="plans-image-section">
-  <div class="plans-overlay">
-    <div class="plans-cards">
-      
-      
-
-    </div>
-  </div>
-</section>
-    
-
-    <section id="services" style="margin-top:12px;">
-      <div class="card">
-        <h3>Services</h3>
-        <p>Home Internet • Mobile Lines • Devices • Setup Support</p>
-      </div>
-    </section>
-
-    <section id="coverage" style="margin-top:12px;">
-      <div class="card">
-        <h3>Coverage</h3>
-        <p>Tell customers which areas you serve and which carriers are available.</p>
-      </div>
-    </section>
-
-    <section id="contact" style="margin-top:12px;">
-      <div class="card">
-        <h3>Contact</h3>
-        <p>
-          Phone: <strong>(301) 263-5865</strong><br/>
-          Name: <strong>Clayton Sanches</strong><br/>
-          Add WhatsApp button or a contact form here.
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="year"></span> GRUPO CS7 — All rights reserved.
-    </footer>
-  </main>
-
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Simple carousel (no libraries)
-    const slidesEl = document.getElementById("slides");
-    const total = slidesEl.children.length;
-    const dotsEl = document.getElementById("dots");
-    const prevBtn = document.getElementById("prev");
-    const nextBtn = document.getElementById("next");
-
-    let index = 0;
-    let timer = null;
-
-    function renderDots(){
-      dotsEl.innerHTML = "";
-      for(let i=0; i<total; i++){
-        const d = document.createElement("button");
-        d.type = "button";
-        d.className = "dot" + (i === index ? " active" : "");
-        d.setAttribute("aria-label", "Go to slide " + (i+1));
-        d.addEventListener("click", () => goTo(i, true));
-        dotsEl.appendChild(d);
-      }
-    }
-
-    function goTo(i, userAction=false){
-      index = (i + total) % total;
-      slidesEl.style.transform = `translateX(-${index * 100}%)`;
-      renderDots();
-      if(userAction) restartAuto();
-    }
-
-    function next(){ goTo(index + 1, true); }
-    function prev(){ goTo(index - 1, true); }
-
-    function startAuto(){
-      timer = setInterval(() => goTo(index + 1), 4500);
-    }
-    function stopAuto(){
-      if(timer) clearInterval(timer);
-      timer = null;
-    }
-    function restartAuto(){
-      stopAuto(); startAuto();
-    }
-
-    prevBtn.addEventListener("click", prev);
-    nextBtn.addEventListener("click", next);
-
-    // Swipe on mobile
-    let startX = null;
-    slidesEl.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-    }, {passive:true});
-    slidesEl.addEventListener("touchend", (e) => {
-      if(startX === null) return;
-      const endX = e.changedTouches[0].clientX;
-      const dx = endX - startX;
-      startX = null;
-      if(Math.abs(dx) > 40){
-        dx < 0 ? next() : prev();
-      }
-    }, {passive:true});
-
-    // Init
-    goTo(0);
-    startAuto();
-  </script>
-</body>
-</html>
+.cs7-plans__image{
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+   
