@@ -3,517 +3,706 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GRUPO CS7 | Internet • Mobile • Devices</title>
-  <meta name="description" content="High-speed Internet, mobile lines, and devices. Built for gaming, music, streaming, and entertainment." />
+  <title>CS7 Telecom | Internet • Mobile • Devices</title>
+  <meta name="description" content="CS7 Telecom — High-speed Internet, Mobile Lines, and Devices. Sign up in minutes. Call 301-263-5865." />
 
   <style>
     :root{
       --bg:#0b1220;
       --panel:#0f1a33;
       --panel2:#0c1630;
-      --text:#e5e7eb;
-      --muted:#a8b3c7;
+      --text:#e8eefc;
+      --muted:#a7b4cd;
       --line:rgba(255,255,255,.12);
       --shadow:0 18px 60px rgba(0,0,0,.40);
       --r:18px;
       --brand:#ff7a18;
       --brand2:#5b78ff;
+      --ok:#00ff88;
     }
-    *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
     body{
       font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
       background:
         radial-gradient(1100px 650px at 15% 5%, rgba(91,120,255,.22), transparent 60%),
         radial-gradient(900px 560px at 85% 20%, rgba(255,122,24,.18), transparent 55%),
         var(--bg);
-      color:var(--text);
     }
-    a{ color:inherit; text-decoration:none; }
-    .container{ max-width:1200px; margin:0 auto; padding:0 14px; }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 14px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      font-weight:800;font-size:12px;color:var(--muted);
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      font-weight:900;cursor:pointer;
+      transition:.15s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,.10)}
+    .btn.primary{
+      background:linear-gradient(90deg, rgba(255,122,24,.25), rgba(91,120,255,.22));
+      border-color:rgba(255,255,255,.18);
+    }
+    .btn.whatsapp{
+      background:rgba(0,255,136,.10);
+      border-color:rgba(0,255,136,.28);
+    }
 
-    /* HEADER */
+    /* Header */
     header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background: rgba(11,18,32,.86);
-      backdrop-filter: blur(10px);
+      position:sticky;top:0;z-index:100;
+      background:rgba(11,18,32,.86);
+      backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
       padding:14px 0;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand img{
+      width:46px;height:46px;object-fit:contain;
+      border-radius:14px;background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:6px;
     }
-    /* O logo em si fica dentro do bloco intocável (abaixo) */
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      gap:3px;
-      min-width:0;
-    }
-    .brandName{
-      font-weight:900;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:52vw;
-    }
-    .brandTag{
-      font-size:12px;
-      color:var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:52vw;
-    }
-    nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .navBtn{
-      padding:10px 12px;
-      border-radius:14px;
+    .brandText{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .brandName{font-weight:900;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brandTag{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+    .navLink{
+      padding:10px 12px;border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      font-weight:800;
-      font-size:13px;
-      transition:.15s ease;
+      background:rgba(255,255,255,.05);
+      font-weight:900;font-size:13px;
     }
-    .navBtn:hover{ background: rgba(255,255,255,.09); }
+    .navLink:hover{background:rgba(255,255,255,.09)}
+    .langToggle{
+      display:flex;gap:8px;align-items:center;
+      padding:6px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+    }
+    .langBtn{
+      border:0;background:transparent;color:var(--text);
+      font-weight:900;cursor:pointer;
+      padding:8px 10px;border-radius:12px;
+    }
+    .langBtn.active{background:rgba(255,255,255,.10)}
 
-    /* HERO */
-    .hero{
-      padding:28px 0 12px;
-    }
+    /* Hero */
+    .hero{padding:28px 0 18px}
     .heroGrid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-      align-items:center;
+      display:grid;grid-template-columns: 1.15fr .85fr;gap:18px;align-items:stretch;
     }
-    .hero h1{
-      margin:0;
-      font-size:30px;
-      letter-spacing:.2px;
-    }
-    .hero p{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:860px;
-      line-height:1.5;
-      font-weight:600;
-    }
-    .heroCtas{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .ctaPrimary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.16);
-      background: linear-gradient(90deg, rgba(255,122,24,.25), rgba(91,120,255,.20));
-      font-weight:900;
-    }
-    .ctaSecondary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      font-weight:900;
-    }
-
-    /* CAROUSEL */
-    #cs7CarouselBlock{
-      margin:18px auto 26px;
-    }
-    .carShell{
-      position:relative;
+    .heroCard{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
       border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-    .carTrack{
-      display:flex;
-      width:100%;
-      height:460px;
-      transition: transform .45s ease;
-      will-change: transform;
-    }
-    .carSlide{
-      min-width:100%;
-      height:100%;
       position:relative;
-      background: var(--panel);
     }
-    .carSlide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      filter:saturate(1.18) contrast(1.06);
+    .heroTitle{margin:10px 0 0;font-size:34px;letter-spacing:.2px}
+    .heroP{margin:10px 0 0;color:var(--muted);line-height:1.5;font-weight:650;max-width:720px}
+    .heroCtas{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .phoneBox{
+      margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+      color:var(--muted);font-weight:900;
     }
-    .carCap{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:16px;
-      padding:14px 14px;
-      border-radius:16px;
-      background: rgba(0,0,0,.55);
+
+    /* Carousel */
+    .carouselWrap{
+      border-radius:22px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:var(--panel);
+      position:relative;
+      box-shadow:var(--shadow);
+    }
+    .track{
+      display:flex;width:100%;height:420px;
+      transition:transform .45s ease;
+      will-change:transform;
+    }
+    .slide{min-width:100%;height:100%;position:relative}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.18) contrast(1.06)}
+    .cap{
+      position:absolute;left:14px;right:14px;bottom:14px;
+      padding:12px 12px;border-radius:16px;
+      background:rgba(0,0,0,.55);
       border:1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(8px);
+      backdrop-filter:blur(8px);
     }
-    .carCap h2{ margin:0 0 6px; font-size:22px; }
-    .carCap p{ margin:0; opacity:.95; font-weight:650; }
-
-    .carNav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      width:48px;
-      height:48px;
-      border-radius:999px;
+    .cap h2{margin:0 0 6px;font-size:20px}
+    .cap p{margin:0;opacity:.95;font-weight:650}
+    .navBtn2{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:46px;height:46px;border-radius:999px;
       border:1px solid rgba(255,255,255,.22);
-      background: rgba(15,26,51,.82);
-      color:#fff;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      font-size:22px;
-      z-index:10;
-      transition:.15s ease;
+      background:rgba(15,26,51,.82);
+      color:#fff;font-size:22px;cursor:pointer;
+      display:grid;place-items:center;z-index:10;
     }
-    .carNav:hover{ background: rgba(15,26,51,.95); }
-    .carPrev{ left:12px; }
-    .carNext{ right:12px; }
-
+    .navBtn2:hover{background:rgba(15,26,51,.95)}
+    .prev{left:10px}
+    .next{right:10px}
     .dots{
-      position:absolute;
-      left:0; right:0;
-      bottom:10px;
-      display:flex;
-      justify-content:center;
-      gap:8px;
-      z-index:10;
+      position:absolute;left:0;right:0;bottom:10px;
+      display:flex;justify-content:center;gap:8px;z-index:10;
     }
     .dot{
       width:9px;height:9px;border-radius:999px;
-      background: rgba(255,255,255,.35);
-      border: 1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.35);
+      border:1px solid rgba(255,255,255,.18);
       cursor:pointer;
     }
-    .dot.active{ background: rgba(255,255,255,.92); }
-
-    /* PLANS IMAGE SLIDE */
+    .dot.active{background:rgba(255,255,255,.92)}
     .plansSlide{
-      width:100%;
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:22px;
+      width:100%;height:100%;
+      display:flex;align-items:center;justify-content:center;
+      padding:18px;
       background:
         radial-gradient(900px 520px at 20% 20%, rgba(91,120,255,.75), transparent 55%),
         radial-gradient(900px 520px at 80% 40%, rgba(255,122,24,.75), transparent 55%),
         linear-gradient(135deg, #0b1220, #0f1a33);
     }
     .plansCard{
-      width:min(760px, 100%);
-      border-radius:22px;
-      padding:20px;
-      background: rgba(0,0,0,.35);
+      width:min(760px,100%);
+      border-radius:22px;padding:18px;
+      background:rgba(0,0,0,.35);
       border:1px solid rgba(255,255,255,.18);
       text-align:center;
     }
-    .plansTitle{
-      margin:0 0 10px;
-      font-size:28px;
-      font-weight:900;
-      letter-spacing:.2px;
-    }
-    .plansRow{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top:14px;
-    }
-    .pill{
-      border-radius:18px;
-      padding:14px 10px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      font-weight:900;
-      font-size:18px;
-    }
-    .plansCall{
-      margin-top:14px;
-      font-weight:900;
-      opacity:.95;
-      letter-spacing:.2px;
-    }
+    .plansTitle{margin:0 0 10px;font-size:26px;font-weight:900}
+    .plansRow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .pill{border-radius:18px;padding:14px 10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-weight:900}
+    .plansCall{margin-top:12px;font-weight:900;color:rgba(255,255,255,.92)}
 
-    /* SECTIONS */
-    .sectionTitle{
-      margin:0 0 12px;
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:.2px;
-    }
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      margin:0 0 28px;
-    }
+    /* Sections */
+    .section{padding:12px 0 28px}
+    .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .h2{margin:0;font-size:20px;font-weight:900;letter-spacing:.2px}
+    .sub{margin:8px 0 0;color:var(--muted);font-weight:650}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.12);
       border-radius:22px;
       padding:16px;
     }
-    .card h3{ margin:0 0 8px; font-size:16px; }
-    .card p{ margin:0; color:var(--muted); line-height:1.45; font-weight:650; }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);line-height:1.45;font-weight:650}
 
-    /* FOOTER */
+    /* Form */
+    .formWrap{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      padding:16px;
+      margin-top:14px;
+    }
+    form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    label{display:flex;flex-direction:column;gap:6px;font-weight:900;font-size:13px}
+    input,select,textarea{
+      padding:12px 12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      outline:none;
+      font-weight:650;
+    }
+    textarea{min-height:110px;grid-column:1 / -1;resize:vertical}
+    .full{grid-column:1 / -1}
+    .formActions{grid-column:1 / -1;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .note{color:var(--muted);font-weight:650;font-size:13px;margin:0}
+    .okBar{
+      display:none;
+      margin-top:10px;
+      border:1px solid rgba(0,255,136,.30);
+      background:rgba(0,255,136,.10);
+      border-radius:16px;
+      padding:12px 12px;
+      font-weight:900;
+      color:rgba(255,255,255,.92);
+    }
+
     footer{
       border-top:1px solid var(--line);
       padding:22px 0 26px;
       color:var(--muted);
       font-size:13px;
     }
-    .footerRow{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    .footerRow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
 
-    @media (max-width: 900px){
-      .cards{ grid-template-columns: 1fr; }
-      .hero h1{ font-size:26px; }
-      .carTrack{ height:400px; }
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
     }
-    @media (max-width: 560px){
-      .carTrack{ height:360px; }
-      .plansRow{ grid-template-columns: 1fr; }
-      .pill{ font-size:17px; }
-      .brandName, .brandTag{ max-width:46vw; }
+    @media (max-width: 760px){
+      .grid3{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+      .track{height:360px}
+      .heroTitle{font-size:28px}
+      .plansRow{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="topbar">
 
-        <div class="brand">
-          <!-- ================= LOGO START (DO NOT CHANGE) =================
-               Cole aqui EXATAMENTE o mesmo código do seu logo atual (o que estava funcionando).
-               Exemplo comum (apenas exemplo): <img src="assets/logo.png" alt="GRUPO CS7" />
-               ================== LOGO END ================== -->
-          <img src="PUT-YOUR-EXISTING-LOGO-SRC-HERE" alt="GRUPO CS7" style="width:44px;height:44px;object-fit:contain;" />
-          <!-- ============================================================ -->
-
-          <div class="brandText">
-            <div class="brandName">GRUPO CS7</div>
-            <div class="brandTag">Internet • Mobile Lines • Devices</div>
-          </div>
+<header>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/cs7-logo.png" alt="CS7 Telecom Logo">
+        <div class="brandText">
+          <div class="brandName">CS7 Telecom</div>
+          <div class="brandTag" data-i18n="tagline">Internet • Mobile Lines • Devices</div>
         </div>
-
-        <nav>
-          <a class="navBtn" href="#cs7CarouselBlock">Plans</a>
-          <a class="navBtn" href="tel:+13012635865">Call (301) 263-5865</a>
-        </nav>
       </div>
+
+      <nav>
+        <a class="navLink" href="#plans" data-i18n="navPlans">Plans</a>
+        <a class="navLink" href="#signup" data-i18n="navSignup">Sign Up</a>
+        <a class="navLink" href="tel:+13012635865">Call 301-263-5865</a>
+
+        <div class="langToggle" aria-label="Language">
+          <button class="langBtn active" id="btnEN" type="button">EN</button>
+          <button class="langBtn" id="btnPT" type="button">PT</button>
+        </div>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="heroGrid">
-        <div>
-          <h1>High-Speed Internet for Real Life</h1>
-          <p>Built for entertainment: music, gaming, streaming, and social media. Internet plans, mobile lines, and devices — all in one place.</p>
-          <div class="heroCtas">
-            <a class="ctaPrimary" href="#cs7CarouselBlock">View Plans</a>
-            <a class="ctaSecondary" href="tel:+13012635865">Call (301) 263-5865</a>
-          </div>
+<main class="container">
+
+  <section class="hero">
+    <div class="heroGrid">
+
+      <div class="heroCard">
+        <span class="chip" data-i18n="chip">Fiber Internet • Entertainment Ready</span>
+        <h1 class="heroTitle" data-i18n="heroTitle">Fast Internet for Music, Gaming & Streaming</h1>
+        <p class="heroP" data-i18n="heroP">
+          High-speed internet, mobile plans, and devices — made for fun online. Enjoy stable connection, strong Wi-Fi, and better performance.
+        </p>
+
+        <div class="heroCtas">
+          <a class="btn primary" href="#signup" data-i18n="ctaSignup">Sign Up Now</a>
+          <a class="btn whatsapp" id="waTop" href="#" data-i18n="ctaWhatsapp">WhatsApp</a>
+          <a class="btn" href="#plans" data-i18n="ctaPlans">See Plans</a>
+        </div>
+
+        <div class="phoneBox">
+          <span data-i18n="callLabel">Call:</span> <strong>301-263-5865</strong>
         </div>
       </div>
-    </section>
-  </main>
 
-  <!-- ===================== CAROUSEL CENTRAL (FUN ONLY) ===================== -->
-  <section id="cs7CarouselBlock" class="container">
-    <div class="carShell">
-      <button class="carNav carPrev" type="button" aria-label="Previous">‹</button>
-      <button class="carNav carNext" type="button" aria-label="Next">›</button>
+      <div class="carouselWrap" aria-label="CS7 Carousel">
+        <button class="navBtn2 prev" type="button" aria-label="Previous">‹</button>
+        <button class="navBtn2 next" type="button" aria-label="Next">›</button>
 
-      <div class="carTrack" id="carTrack">
-        <!-- 1) MUSIC / HEADPHONES / FUN -->
-        <div class="carSlide">
-          <img
-            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2000&q=80"
-            alt="People enjoying music on the internet" />
-          <div class="carCap">
-            <h2>Sign Up Now</h2>
-            <p>Internet • Mobile • Devices — all in one place</p>
+        <div class="track" id="track">
+          <!-- FUN ONLY images (fixed URLs): music / gaming / couple / plans -->
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2000&q=80"
+                 alt="Enjoying music online">
+            <div class="cap">
+              <h2 data-i18n="s1Title">Sign Up Now</h2>
+              <p data-i18n="s1Text">Internet • Mobile • Devices — all in one place</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 2) GAMING / FUN -->
-        <div class="carSlide">
-          <img
-            src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=2000&q=80"
-            alt="Gaming with high-speed internet" />
-          <div class="carCap">
-            <h2>Perfect for Gaming</h2>
-            <p>Fast speed • Stable connection • Low buffering</p>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=2000&q=80"
+                 alt="Gaming with high-speed internet">
+            <div class="cap">
+              <h2 data-i18n="s2Title">Perfect for Gaming</h2>
+              <p data-i18n="s2Text">Fast speed • Stable connection • Low buffering</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 3) COUPLE / PHONE / FUN -->
-        <div class="carSlide">
-          <img
-            src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=2000&q=80"
-            alt="Couple enjoying the internet on a smartphone" />
-          <div class="carCap">
-            <h2>Stay Connected</h2>
-            <p>Streaming • Social • Entertainment</p>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=2000&q=80"
+                 alt="Couple enjoying internet on smartphone">
+            <div class="cap">
+              <h2 data-i18n="s3Title">Stay Connected</h2>
+              <p data-i18n="s3Text">Streaming • Social • Entertainment</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 4) PLANS IMAGE SLIDE -->
-        <div class="carSlide">
-          <div class="plansSlide">
-            <div class="plansCard">
-              <p class="plansTitle">Plans</p>
-              <div class="plansRow">
-                <div class="pill">300 Mega</div>
-                <div class="pill">600 Mega</div>
-                <div class="pill">1 Giga</div>
+          <div class="slide">
+            <div class="plansSlide" role="img" aria-label="Plans 300 600 1 Giga">
+              <div class="plansCard">
+                <p class="plansTitle" data-i18n="plansTitle">Plans</p>
+                <div class="plansRow">
+                  <div class="pill">300 Mega</div>
+                  <div class="pill">600 Mega</div>
+                  <div class="pill">1 Giga</div>
+                </div>
+                <div class="plansCall" data-i18n="plansCall">Call: 301-263-5865</div>
               </div>
-              <div class="plansCall">Call: (301) 263-5865</div>
             </div>
           </div>
         </div>
+
+        <div class="dots" id="dots"></div>
       </div>
 
-      <div class="dots" id="dots"></div>
-    </div>
-  </section>
-  <!-- ===================================================================== -->
-
-  <section class="container" style="margin-top:10px;">
-    <h2 class="sectionTitle">What we offer</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Internet Plans</h3>
-        <p>Strong signal and stable connection for streaming, gaming, and music — built for multiple devices.</p>
-      </div>
-      <div class="card">
-        <h3>Mobile Lines</h3>
-        <p>Flexible mobile options so you can stay connected everywhere — calls, data, and entertainment.</p>
-      </div>
-      <div class="card">
-        <h3>Devices</h3>
-        <p>Upgrade your experience with devices that match your lifestyle — fast, modern, and reliable.</p>
-      </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <div class="footerRow">
-        <div>© <span id="year"></span> GRUPO CS7</div>
-        <div>(301) 263-5865</div>
+  <section class="section" id="plans">
+    <div class="sectionHead">
+      <div>
+        <h2 class="h2" data-i18n="plansH2">Choose your plan</h2>
+        <p class="sub" data-i18n="plansSub">Great for streaming, gaming, music, and multiple devices.</p>
+      </div>
+      <a class="btn whatsapp" id="waPlans" href="#" data-i18n="ctaWhatsapp">WhatsApp</a>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>300 Mega</h3>
+        <p data-i18n="p300">Ideal for streaming, social media, and everyday use.</p>
+      </div>
+      <div class="card">
+        <h3>600 Mega</h3>
+        <p data-i18n="p600">Best for gamers and families with multiple devices.</p>
+      </div>
+      <div class="card">
+        <h3>1 Giga</h3>
+        <p data-i18n="p1g">Maximum performance for heavy streaming and fast downloads.</p>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // year
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <section class="section">
+    <div class="sectionHead">
+      <div>
+        <h2 class="h2" data-i18n="offerH2">What we offer</h2>
+        <p class="sub" data-i18n="offerSub">Internet, mobile lines, and devices — everything in one place.</p>
+      </div>
+    </div>
 
-    // carousel
-    (function(){
-      const track = document.getElementById("carTrack");
-      const dotsWrap = document.getElementById("dots");
-      const prev = document.querySelector(".carPrev");
-      const next = document.querySelector(".carNext");
-      if(!track || !dotsWrap || !prev || !next) return;
+    <div class="grid3">
+      <div class="card">
+        <h3 data-i18n="o1Title">Strong Wi-Fi Coverage</h3>
+        <p data-i18n="o1Text">Reliable connection across your home for streaming and gaming.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="o2Title">Mobile Lines</h3>
+        <p data-i18n="o2Text">Flexible options so you can stay connected anywhere.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="o3Title">Devices</h3>
+        <p data-i18n="o3Text">Phones and accessories that match your lifestyle.</p>
+      </div>
+    </div>
+  </section>
 
-      const slides = track.children.length;
-      let index = 0;
+  <section class="section" id="signup">
+    <div class="sectionHead">
+      <div>
+        <h2 class="h2" data-i18n="formH2">Sign up in minutes</h2>
+        <p class="sub" data-i18n="formSub">Fill the form and we’ll contact you. Form sends directly to WhatsApp.</p>
+      </div>
+      <a class="btn primary" href="tel:+13012635865" data-i18n="callNow">Call Now</a>
+    </div>
 
-      // dots
-      const dots = [];
-      for(let i=0;i<slides;i++){
-        const d = document.createElement("span");
-        d.className = "dot" + (i===0 ? " active" : "");
-        d.addEventListener("click", () => go(i));
-        dotsWrap.appendChild(d);
-        dots.push(d);
-      }
+    <div class="formWrap">
+      <form id="leadForm">
+        <label>
+          <span data-i18n="fName">Full Name</span>
+          <input name="name" required placeholder="John Smith" />
+        </label>
 
-      function paint(){
-        dots.forEach((d,i)=>d.classList.toggle("active", i===index));
-      }
+        <label>
+          <span data-i18n="fEmail">Email</span>
+          <input name="email" type="email" required placeholder="john@email.com" />
+        </label>
 
-      function go(i){
-        index = (i + slides) % slides;
-        track.style.transform = "translateX(" + (-index * 100) + "%)";
-        paint();
-      }
+        <label>
+          <span data-i18n="fPhone">Phone</span>
+          <input name="phone" required placeholder="(xxx) xxx-xxxx" />
+        </label>
 
-      prev.addEventListener("click", () => go(index - 1));
-      next.addEventListener("click", () => go(index + 1));
+        <label>
+          <span data-i18n="fZip">ZIP Code</span>
+          <input name="zip" required placeholder="20832" />
+        </label>
 
-      // swipe support (mobile)
-      let startX = null;
-      track.addEventListener("touchstart", (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
-      track.addEventListener("touchend", (e)=>{
-        if(startX === null) return;
-        const endX = e.changedTouches[0].clientX;
-        const dx = endX - startX;
-        startX = null;
-        if(Math.abs(dx) > 40){
-          if(dx > 0) go(index - 1);
-          else go(index + 1);
-        }
-      }, {passive:true});
+        <label class="full">
+          <span data-i18n="fAddress">Address</span>
+          <input name="address" required placeholder="Street, Apt, City, State" />
+        </label>
 
-      // autoplay
-      setInterval(()=>go(index + 1), 5500);
-    })();
-  </script>
+        <label>
+          <span data-i18n="fPlan">Preferred Plan</span>
+          <select name="plan" required>
+            <option value="" selected disabled>Select…</option>
+            <option>300 Mega</option>
+            <option>600 Mega</option>
+            <option>1 Giga</option>
+          </select>
+        </label>
+
+        <label>
+          <span data-i18n="fContact">Best contact</span>
+          <select name="contact" required>
+            <option value="" selected disabled>Select…</option>
+            <option>WhatsApp</option>
+            <option>Call</option>
+            <option>Email</option>
+          </select>
+        </label>
+
+        <label class="full">
+          <span data-i18n="fNotes">Notes</span>
+          <textarea name="notes" placeholder="Any details (best time to call, current provider, etc.)"></textarea>
+        </label>
+
+        <div class="formActions">
+          <button class="btn primary" type="submit" data-i18n="fSubmit">Send to WhatsApp</button>
+          <a class="btn whatsapp" id="waDirect" href="#" data-i18n="ctaWhatsapp">WhatsApp</a>
+          <p class="note" data-i18n="formNote">No credit card required. We’ll confirm availability and next steps.</p>
+        </div>
+
+        <div class="okBar" id="okBar" data-i18n="sentOk">✅ Ready! WhatsApp will open with your information.</div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footerRow">
+      <div>© <span id="year"></span> CS7 Telecom</div>
+      <div><a href="tel:+13012635865">301-263-5865</a> • <a id="waFooter" href="#">WhatsApp</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ================== Settings ==================
+  const PHONE_RAW = "13012635865"; // wa.me needs country code
+  const PHONE_DISPLAY = "301-263-5865";
+
+  // ================== WhatsApp Links ==================
+  function waLink(message){
+    return "https://wa.me/" + PHONE_RAW + "?text=" + encodeURIComponent(message);
+  }
+  function setWA(id, msg){
+    const el = document.getElementById(id);
+    if(el) el.href = waLink(msg);
+  }
+  const defaultMsgEN = "Hi CS7 Telecom! I want to sign up for Internet/Mobile. Please contact me. Phone: " + PHONE_DISPLAY;
+  setWA("waTop", defaultMsgEN);
+  setWA("waPlans", "Hi CS7 Telecom! I want to see plans (300/600/1 Giga). Phone: " + PHONE_DISPLAY);
+  setWA("waDirect", defaultMsgEN);
+  setWA("waFooter", defaultMsgEN);
+
+  // ================== Year ==================
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ================== Carousel ==================
+  (function(){
+    const track = document.getElementById("track");
+    const dotsWrap = document.getElementById("dots");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+    if(!track || !dotsWrap || !prev || !next) return;
+
+    const slides = track.children.length;
+    let index = 0;
+
+    const dots = [];
+    for(let i=0;i<slides;i++){
+      const d = document.createElement("span");
+      d.className = "dot" + (i===0 ? " active" : "");
+      d.addEventListener("click", () => go(i));
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    }
+    function paint(){ dots.forEach((d,i)=>d.classList.toggle("active", i===index)); }
+    function go(i){
+      index = (i + slides) % slides;
+      track.style.transform = "translateX(" + (-index * 100) + "%)";
+      paint();
+    }
+    prev.addEventListener("click", ()=>go(index-1));
+    next.addEventListener("click", ()=>go(index+1));
+
+    // swipe
+    let startX=null;
+    track.addEventListener("touchstart",(e)=>{ startX=e.touches[0].clientX; },{passive:true});
+    track.addEventListener("touchend",(e)=>{
+      if(startX===null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      startX=null;
+      if(Math.abs(dx)>40) dx>0 ? go(index-1) : go(index+1);
+    },{passive:true});
+
+    setInterval(()=>go(index+1), 5500);
+  })();
+
+  // ================== Language Toggle (EN/PT) ==================
+  const dict = {
+    en: {
+      tagline:"Internet • Mobile Lines • Devices",
+      navPlans:"Plans",
+      navSignup:"Sign Up",
+      chip:"Fiber Internet • Entertainment Ready",
+      heroTitle:"Fast Internet for Music, Gaming & Streaming",
+      heroP:"High-speed internet, mobile plans, and devices — made for fun online. Enjoy stable connection, strong Wi-Fi, and better performance.",
+      ctaSignup:"Sign Up Now",
+      ctaWhatsapp:"WhatsApp",
+      ctaPlans:"See Plans",
+      callLabel:"Call:",
+      s1Title:"Sign Up Now",
+      s1Text:"Internet • Mobile • Devices — all in one place",
+      s2Title:"Perfect for Gaming",
+      s2Text:"Fast speed • Stable connection • Low buffering",
+      s3Title:"Stay Connected",
+      s3Text:"Streaming • Social • Entertainment",
+      plansTitle:"Plans",
+      plansCall:"Call: 301-263-5865",
+      plansH2:"Choose your plan",
+      plansSub:"Great for streaming, gaming, music, and multiple devices.",
+      p300:"Ideal for streaming, social media, and everyday use.",
+      p600:"Best for gamers and families with multiple devices.",
+      p1g:"Maximum performance for heavy streaming and fast downloads.",
+      offerH2:"What we offer",
+      offerSub:"Internet, mobile lines, and devices — everything in one place.",
+      o1Title:"Strong Wi-Fi Coverage",
+      o1Text:"Reliable connection across your home for streaming and gaming.",
+      o2Title:"Mobile Lines",
+      o2Text:"Flexible options so you can stay connected anywhere.",
+      o3Title:"Devices",
+      o3Text:"Phones and accessories that match your lifestyle.",
+      formH2:"Sign up in minutes",
+      formSub:"Fill the form and we’ll contact you. Form sends directly to WhatsApp.",
+      callNow:"Call Now",
+      fName:"Full Name",
+      fEmail:"Email",
+      fPhone:"Phone",
+      fZip:"ZIP Code",
+      fAddress:"Address",
+      fPlan:"Preferred Plan",
+      fContact:"Best contact",
+      fNotes:"Notes",
+      fSubmit:"Send to WhatsApp",
+      formNote:"No credit card required. We’ll confirm availability and next steps.",
+      sentOk:"✅ Ready! WhatsApp will open with your information."
+    },
+    pt: {
+      tagline:"Internet • Linhas Móveis • Aparelhos",
+      navPlans:"Planos",
+      navSignup:"Cadastro",
+      chip:"Internet Fibra • Pronto para entretenimento",
+      heroTitle:"Internet rápida para Música, Games e Streaming",
+      heroP:"Internet de alta velocidade, planos móveis e aparelhos — feito para curtir online. Conexão estável, Wi-Fi forte e melhor desempenho.",
+      ctaSignup:"Assine Agora",
+      ctaWhatsapp:"WhatsApp",
+      ctaPlans:"Ver Planos",
+      callLabel:"Ligue:",
+      s1Title:"Assine Agora",
+      s1Text:"Internet • Celular • Aparelhos — tudo em um só lugar",
+      s2Title:"Perfeito para Games",
+      s2Text:"Alta velocidade • Estável • Sem travar",
+      s3Title:"Fique Conectado",
+      s3Text:"Streaming • Redes sociais • Entretenimento",
+      plansTitle:"Planos",
+      plansCall:"Ligue: 301-263-5865",
+      plansH2:"Escolha seu plano",
+      plansSub:"Ótimo para streaming, games, música e vários aparelhos.",
+      p300:"Ideal para streaming, redes sociais e uso diário.",
+      p600:"Melhor para gamers e famílias com vários aparelhos.",
+      p1g:"Máximo desempenho para streaming pesado e downloads rápidos.",
+      offerH2:"O que oferecemos",
+      offerSub:"Internet, linhas móveis e aparelhos — tudo em um só lugar.",
+      o1Title:"Wi-Fi Forte",
+      o1Text:"Conexão confiável pela casa toda para streaming e games.",
+      o2Title:"Linhas de Celular",
+      o2Text:"Opções flexíveis para você ficar conectado em qualquer lugar.",
+      o3Title:"Aparelhos",
+      o3Text:"Celulares e acessórios para o seu estilo de vida.",
+      formH2:"Cadastre-se em minutos",
+      formSub:"Preencha o formulário e entraremos em contato. O envio vai direto para o WhatsApp.",
+      callNow:"Ligar Agora",
+      fName:"Nome Completo",
+      fEmail:"Email",
+      fPhone:"Telefone",
+      fZip:"ZIP Code",
+      fAddress:"Endereço",
+      fPlan:"Plano desejado",
+      fContact:"Melhor contato",
+      fNotes:"Observações",
+      fSubmit:"Enviar no WhatsApp",
+      formNote:"Sem cartão. Confirmamos disponibilidade e próximos passos.",
+      sentOk:"✅ Pronto! O WhatsApp vai abrir com seus dados."
+    }
+  };
+
+  function applyLang(lang){
+    document.getElementById("btnEN").classList.toggle("active", lang==="en");
+    document.getElementById("btnPT").classList.toggle("active", lang==="pt");
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      if(dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+    });
+
+    // update WhatsApp default message language
+    const msg = (lang==="pt")
+      ? "Olá CS7 Telecom! Quero assinar Internet/Celular. Pode entrar em contato comigo? Telefone: " + PHONE_DISPLAY
+      : "Hi CS7 Telecom! I want to sign up for Internet/Mobile. Please contact me. Phone: " + PHONE_DISPLAY;
+
+    setWA("waTop", msg);
+    setWA("waDirect", msg);
+    setWA("waFooter", msg);
+  }
+
+  document.getElementById("btnEN").addEventListener("click", ()=>applyLang("en"));
+  document.getElementById("btnPT").addEventListener("click", ()=>applyLang("pt"));
+
+  // ================== Form -> WhatsApp ==================
+  document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const name = (fd.get("name")||"").trim();
+    const email = (fd.get("email")||"").trim();
+    const phone = (fd.get("phone")||"").trim();
+    const zip = (fd.get("zip")||"").trim();
+    const address = (fd.get("address")||"").trim();
+    const plan = (fd.get("plan")||"").trim();
+    const contact = (fd.get("contact")||"").trim();
+    const notes = (fd.get("notes")||"").trim();
+
+    const lang = document.documentElement.lang.startsWith("pt") ? "pt" : "en";
+
+    const msg = (lang==="pt")
+      ? `Cadastro CS7 Telecom:\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${phone}\nZIP: ${zip}\nEndereço: ${address}\nPlano: ${plan}\nContato: ${contact}\nObs: ${notes || "-"}`
+      : `CS7 Telecom Signup:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nZIP: ${zip}\nAddress: ${address}\nPlan: ${plan}\nBest contact: ${contact}\nNotes: ${notes || "-"}`;
+
+    document.getElementById("okBar").style.display = "block";
+    window.open(waLink(msg), "_blank");
+  });
+
+  // default language
+  applyLang("en");
+</script>
+
 </body>
 </html>
