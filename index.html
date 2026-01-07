@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CS7 Telecom | Internet • Mobile • Devices</title>
-  <meta name="description" content="CS7 Telecom — High-speed Internet, Mobile Lines, and Devices. Sign up in minutes. Call 301-263-5865." />
+  <meta name="description" content="CS7 Telecom — High-speed Internet, Mobile lines and Devices. Call 301-263-5865 or message on WhatsApp." />
 
   <style>
     :root{
@@ -32,13 +32,6 @@
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 14px}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-      font-weight:800;font-size:12px;color:var(--muted);
-    }
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:12px 16px;border-radius:16px;
@@ -46,6 +39,7 @@
       background:rgba(255,255,255,.06);
       font-weight:900;cursor:pointer;
       transition:.15s ease;
+      user-select:none;
     }
     .btn:hover{background:rgba(255,255,255,.10)}
     .btn.primary{
@@ -56,8 +50,15 @@
       background:rgba(0,255,136,.10);
       border-color:rgba(0,255,136,.28);
     }
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      font-weight:900;font-size:12px;color:var(--muted);
+    }
 
-    /* Header */
+    /* HEADER */
     header{
       position:sticky;top:0;z-index:100;
       background:rgba(11,18,32,.86);
@@ -69,10 +70,15 @@
       padding:14px 0;
     }
     .brand{display:flex;align-items:center;gap:12px;min-width:0}
-    .brand img{
-      width:46px;height:46px;object-fit:contain;
-      border-radius:14px;background:rgba(255,255,255,.06);
+    .logoWrap{
+      width:46px;height:46px;border-radius:14px;
+      background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
+      display:grid;place-items:center;
+      overflow:hidden;
+    }
+    .brand img{
+      width:46px;height:46px;object-fit:contain;display:block;
       padding:6px;
     }
     .brandText{display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -99,7 +105,7 @@
     }
     .langBtn.active{background:rgba(255,255,255,.10)}
 
-    /* Hero */
+    /* HERO */
     .hero{padding:28px 0 18px}
     .heroGrid{
       display:grid;grid-template-columns: 1.15fr .85fr;gap:18px;align-items:stretch;
@@ -121,7 +127,7 @@
       color:var(--muted);font-weight:900;
     }
 
-    /* Carousel */
+    /* CAROUSEL */
     .carouselWrap{
       border-radius:22px;overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
@@ -188,7 +194,7 @@
     .pill{border-radius:18px;padding:14px 10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-weight:900}
     .plansCall{margin-top:12px;font-weight:900;color:rgba(255,255,255,.92)}
 
-    /* Sections */
+    /* SECTIONS */
     .section{padding:12px 0 28px}
     .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .h2{margin:0;font-size:20px;font-weight:900;letter-spacing:.2px}
@@ -203,7 +209,7 @@
     .card h3{margin:0 0 8px;font-size:16px}
     .card p{margin:0;color:var(--muted);line-height:1.45;font-weight:650}
 
-    /* Form */
+    /* FORM */
     .formWrap{
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.12);
@@ -263,7 +269,14 @@
   <div class="container">
     <div class="topbar">
       <div class="brand">
-        <img src="assets/cs7-logo.png" alt="CS7 Telecom Logo">
+        <div class="logoWrap">
+          <!-- LOGO: must exist at assets/cs7-logo.png -->
+          <img
+            src="assets/cs7-logo.png"
+            alt="CS7 Telecom Logo"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-weight:900;color:#fff;font-size:14px;&quot;>CS7</span>';"
+          />
+        </div>
         <div class="brandText">
           <div class="brandName">CS7 Telecom</div>
           <div class="brandTag" data-i18n="tagline">Internet • Mobile Lines • Devices</div>
@@ -312,10 +325,9 @@
         <button class="navBtn2 next" type="button" aria-label="Next">›</button>
 
         <div class="track" id="track">
-          <!-- FUN ONLY images (fixed URLs): music / gaming / couple / plans -->
+          <!-- Fixed images (not random) -->
           <div class="slide">
-            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2000&q=80"
-                 alt="Enjoying music online">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2000&q=80" alt="Enjoying music online">
             <div class="cap">
               <h2 data-i18n="s1Title">Sign Up Now</h2>
               <p data-i18n="s1Text">Internet • Mobile • Devices — all in one place</p>
@@ -323,8 +335,7 @@
           </div>
 
           <div class="slide">
-            <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=2000&q=80"
-                 alt="Gaming with high-speed internet">
+            <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=2000&q=80" alt="Gaming with high-speed internet">
             <div class="cap">
               <h2 data-i18n="s2Title">Perfect for Gaming</h2>
               <p data-i18n="s2Text">Fast speed • Stable connection • Low buffering</p>
@@ -332,8 +343,7 @@
           </div>
 
           <div class="slide">
-            <img src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=2000&q=80"
-                 alt="Couple enjoying internet on smartphone">
+            <img src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=2000&q=80" alt="Couple enjoying internet on smartphone">
             <div class="cap">
               <h2 data-i18n="s3Title">Stay Connected</h2>
               <p data-i18n="s3Text">Streaming • Social • Entertainment</p>
@@ -449,7 +459,7 @@
         <label>
           <span data-i18n="fPlan">Preferred Plan</span>
           <select name="plan" required>
-            <option value="" selected disabled>Select…</option>
+            <option value="" selected disabled data-i18n="selectOne">Select…</option>
             <option>300 Mega</option>
             <option>600 Mega</option>
             <option>1 Giga</option>
@@ -459,7 +469,7 @@
         <label>
           <span data-i18n="fContact">Best contact</span>
           <select name="contact" required>
-            <option value="" selected disabled>Select…</option>
+            <option value="" selected disabled data-i18n="selectOne">Select…</option>
             <option>WhatsApp</option>
             <option>Call</option>
             <option>Email</option>
@@ -488,7 +498,11 @@
   <div class="container">
     <div class="footerRow">
       <div>© <span id="year"></span> CS7 Telecom</div>
-      <div><a href="tel:+13012635865">301-263-5865</a> • <a id="waFooter" href="#">WhatsApp</a></div>
+      <div>
+        <a href="tel:+13012635865">301-263-5865</a>
+        •
+        <a id="waFooter" href="#">WhatsApp</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -506,11 +520,13 @@
     const el = document.getElementById(id);
     if(el) el.href = waLink(msg);
   }
-  const defaultMsgEN = "Hi CS7 Telecom! I want to sign up for Internet/Mobile. Please contact me. Phone: " + PHONE_DISPLAY;
-  setWA("waTop", defaultMsgEN);
-  setWA("waPlans", "Hi CS7 Telecom! I want to see plans (300/600/1 Giga). Phone: " + PHONE_DISPLAY);
-  setWA("waDirect", defaultMsgEN);
-  setWA("waFooter", defaultMsgEN);
+
+  // default
+  function defaultMsg(lang){
+    return (lang==="pt")
+      ? "Olá CS7 Telecom! Quero assinar Internet/Celular. Pode entrar em contato comigo? Tel: " + PHONE_DISPLAY
+      : "Hi CS7 Telecom! I want to sign up for Internet/Mobile. Please contact me. Phone: " + PHONE_DISPLAY;
+  }
 
   // ================== Year ==================
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -603,7 +619,8 @@
       fNotes:"Notes",
       fSubmit:"Send to WhatsApp",
       formNote:"No credit card required. We’ll confirm availability and next steps.",
-      sentOk:"✅ Ready! WhatsApp will open with your information."
+      sentOk:"✅ Ready! WhatsApp will open with your information.",
+      selectOne:"Select…"
     },
     pt: {
       tagline:"Internet • Linhas Móveis • Aparelhos",
@@ -650,28 +667,30 @@
       fNotes:"Observações",
       fSubmit:"Enviar no WhatsApp",
       formNote:"Sem cartão. Confirmamos disponibilidade e próximos passos.",
-      sentOk:"✅ Pronto! O WhatsApp vai abrir com seus dados."
+      sentOk:"✅ Pronto! O WhatsApp vai abrir com seus dados.",
+      selectOne:"Selecione…"
     }
   };
 
   function applyLang(lang){
     document.getElementById("btnEN").classList.toggle("active", lang==="en");
     document.getElementById("btnPT").classList.toggle("active", lang==="pt");
-    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+    document.documentElement.lang = (lang==="pt") ? "pt-BR" : "en";
 
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
       if(dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
     });
 
-    // update WhatsApp default message language
-    const msg = (lang==="pt")
-      ? "Olá CS7 Telecom! Quero assinar Internet/Celular. Pode entrar em contato comigo? Telefone: " + PHONE_DISPLAY
-      : "Hi CS7 Telecom! I want to sign up for Internet/Mobile. Please contact me. Phone: " + PHONE_DISPLAY;
-
+    // WhatsApp messages in correct language
+    const msg = defaultMsg(lang);
     setWA("waTop", msg);
     setWA("waDirect", msg);
     setWA("waFooter", msg);
+    setWA("waPlans", (lang==="pt")
+      ? "Olá CS7 Telecom! Quero ver planos (300/600/1 Giga). Tel: " + PHONE_DISPLAY
+      : "Hi CS7 Telecom! I want to see plans (300/600/1 Giga). Phone: " + PHONE_DISPLAY
+    );
   }
 
   document.getElementById("btnEN").addEventListener("click", ()=>applyLang("en"));
@@ -700,7 +719,7 @@
     window.open(waLink(msg), "_blank");
   });
 
-  // default language
+  // initial
   applyLang("en");
 </script>
 
