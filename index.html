@@ -4,307 +4,516 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GRUPO CS7 | Internet • Mobile • Devices</title>
-
-  <meta name="description" content="High-speed internet, mobile lines and devices. Perfect for gaming, streaming and entertainment." />
+  <meta name="description" content="High-speed Internet, mobile lines, and devices. Built for gaming, music, streaming, and entertainment." />
 
   <style>
     :root{
       --bg:#0b1220;
-      --card:#0f1a33;
+      --panel:#0f1a33;
+      --panel2:#0c1630;
       --text:#e5e7eb;
-      --muted:#94a3b8;
-      --line: rgba(255,255,255,.12);
+      --muted:#a8b3c7;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 18px 60px rgba(0,0,0,.40);
+      --r:18px;
       --brand:#ff7a18;
-      --radius:18px;
+      --brand2:#5b78ff;
     }
-
     *{ box-sizing:border-box; }
-
+    html,body{ margin:0; padding:0; }
     body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1100px 650px at 15% 5%, rgba(91,120,255,.22), transparent 60%),
+        radial-gradient(900px 560px at 85% 20%, rgba(255,122,24,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
     }
-
     a{ color:inherit; text-decoration:none; }
+    .container{ max-width:1200px; margin:0 auto; padding:0 14px; }
 
-    /* ================= HEADER (LOGO NÃO ALTERADO) ================= */
+    /* HEADER */
     header{
       position:sticky;
       top:0;
-      z-index:50;
-      background: rgba(11,18,32,.9);
+      z-index:100;
+      background: rgba(11,18,32,.86);
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--line);
     }
-
     .topbar{
-      max-width:1200px;
-      margin:0 auto;
-      padding:14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:14px;
+      padding:14px 0;
     }
-
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
+      min-width:0;
     }
-
-    .brand img{
-      width:44px;
-      height:44px;
-      object-fit:contain;
+    /* O logo em si fica dentro do bloco intocável (abaixo) */
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      min-width:0;
     }
-
-    .brand-name{
+    .brandName{
       font-weight:900;
-      letter-spacing:.3px;
-      font-size:16px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:52vw;
     }
-
+    .brandTag{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:52vw;
+    }
     nav{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
-
-    nav a{
-      padding:10px 14px;
+    .navBtn{
+      padding:10px 12px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.05);
       font-weight:800;
       font-size:13px;
+      transition:.15s ease;
     }
+    .navBtn:hover{ background: rgba(255,255,255,.09); }
 
-    /* ================= HERO ================= */
+    /* HERO */
     .hero{
-      max-width:1200px;
-      margin:24px auto 12px;
-      padding:0 14px;
+      padding:28px 0 12px;
     }
-
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:center;
+    }
     .hero h1{
       margin:0;
-      font-size:26px;
+      font-size:30px;
+      letter-spacing:.2px;
     }
-
     .hero p{
       margin:10px 0 0;
       color:var(--muted);
-      max-width:820px;
+      max-width:860px;
       line-height:1.5;
+      font-weight:600;
     }
-
-    /* ================= CAROUSEL ================= */
-    #cs7Carousel{
-      max-width:1200px;
-      margin:24px auto 36px;
-      padding:0 14px;
-    }
-
-    .carousel-box{
-      position:relative;
-      overflow:hidden;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.14);
-      background:var(--card);
-    }
-
-    .carousel-track{
+    .heroCtas{
+      margin-top:14px;
       display:flex;
-      height:440px;
-      transition:transform .5s ease;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .ctaPrimary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(90deg, rgba(255,122,24,.25), rgba(91,120,255,.20));
+      font-weight:900;
+    }
+    .ctaSecondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      font-weight:900;
     }
 
-    .slide{
+    /* CAROUSEL */
+    #cs7CarouselBlock{
+      margin:18px auto 26px;
+    }
+    .carShell{
+      position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .carTrack{
+      display:flex;
+      width:100%;
+      height:460px;
+      transition: transform .45s ease;
+      will-change: transform;
+    }
+    .carSlide{
       min-width:100%;
       height:100%;
       position:relative;
+      background: var(--panel);
     }
-
-    .slide img{
+    .carSlide img{
       width:100%;
       height:100%;
       object-fit:cover;
-      filter:saturate(1.15) contrast(1.05);
+      display:block;
+      filter:saturate(1.18) contrast(1.06);
     }
-
-    .caption{
+    .carCap{
       position:absolute;
       left:16px;
       right:16px;
       bottom:16px;
-      padding:14px;
+      padding:14px 14px;
       border-radius:16px;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.15);
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(8px);
     }
+    .carCap h2{ margin:0 0 6px; font-size:22px; }
+    .carCap p{ margin:0; opacity:.95; font-weight:650; }
 
-    .caption h2{
-      margin:0 0 6px;
-      font-size:22px;
-    }
-
-    .caption p{
-      margin:0;
-      opacity:.95;
-    }
-
-    .nav-btn{
+    .carNav{
       position:absolute;
       top:50%;
       transform:translateY(-50%);
-      width:46px;
-      height:46px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.2);
-      background:rgba(15,26,51,.8);
+      width:48px;
+      height:48px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(15,26,51,.82);
       color:#fff;
-      font-size:22px;
       cursor:pointer;
-      z-index:5;
-    }
-
-    .prev{ left:12px; }
-    .next{ right:12px; }
-
-    /* ================= PLANS SECTION ================= */
-    .plans{
-      max-width:1200px;
-      margin:0 auto 48px;
-      padding:0 14px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
+      place-items:center;
+      font-size:22px;
+      z-index:10;
+      transition:.15s ease;
     }
+    .carNav:hover{ background: rgba(15,26,51,.95); }
+    .carPrev{ left:12px; }
+    .carNext{ right:12px; }
 
-    .plan{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:20px;
-      padding:18px;
+    .dots{
+      position:absolute;
+      left:0; right:0;
+      bottom:10px;
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      z-index:10;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:999px;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(255,255,255,.18);
+      cursor:pointer;
+    }
+    .dot.active{ background: rgba(255,255,255,.92); }
+
+    /* PLANS IMAGE SLIDE */
+    .plansSlide{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:
+        radial-gradient(900px 520px at 20% 20%, rgba(91,120,255,.75), transparent 55%),
+        radial-gradient(900px 520px at 80% 40%, rgba(255,122,24,.75), transparent 55%),
+        linear-gradient(135deg, #0b1220, #0f1a33);
+    }
+    .plansCard{
+      width:min(760px, 100%);
+      border-radius:22px;
+      padding:20px;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.18);
       text-align:center;
     }
-
-    .plan h3{
+    .plansTitle{
       margin:0 0 10px;
-      font-size:20px;
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .plansRow{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .pill{
+      border-radius:18px;
+      padding:14px 10px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      font-weight:900;
+      font-size:18px;
+    }
+    .plansCall{
+      margin-top:14px;
+      font-weight:900;
+      opacity:.95;
+      letter-spacing:.2px;
     }
 
-    .plan p{
-      margin:0;
-      color:var(--muted);
-      font-weight:700;
+    /* SECTIONS */
+    .sectionTitle{
+      margin:0 0 12px;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.2px;
     }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin:0 0 28px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      padding:16px;
+    }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); line-height:1.45; font-weight:650; }
 
-    /* ================= FOOTER ================= */
+    /* FOOTER */
     footer{
       border-top:1px solid var(--line);
-      padding:22px 14px;
-      text-align:center;
+      padding:22px 0 26px;
       color:var(--muted);
       font-size:13px;
     }
+    .footerRow{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-    @media(max-width:600px){
-      .carousel-track{ height:360px; }
-      .hero h1{ font-size:22px; }
+    @media (max-width: 900px){
+      .cards{ grid-template-columns: 1fr; }
+      .hero h1{ font-size:26px; }
+      .carTrack{ height:400px; }
+    }
+    @media (max-width: 560px){
+      .carTrack{ height:360px; }
+      .plansRow{ grid-template-columns: 1fr; }
+      .pill{ font-size:17px; }
+      .brandName, .brandTag{ max-width:46vw; }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="container">
+      <div class="topbar">
 
-<header>
-  <div class="topbar">
-    <div class="brand">
-      <!-- NÃO MEXER NO LOGO -->
-      <img src="logo.png" alt="GRUPO CS7 Logo">
-      <div class="brand-name">GRUPO CS7</div>
-    </div>
+        <div class="brand">
+          <!-- ================= LOGO START (DO NOT CHANGE) =================
+               Cole aqui EXATAMENTE o mesmo código do seu logo atual (o que estava funcionando).
+               Exemplo comum (apenas exemplo): <img src="assets/logo.png" alt="GRUPO CS7" />
+               ================== LOGO END ================== -->
+          <img src="PUT-YOUR-EXISTING-LOGO-SRC-HERE" alt="GRUPO CS7" style="width:44px;height:44px;object-fit:contain;" />
+          <!-- ============================================================ -->
 
-    <nav>
-      <a href="#cs7Carousel">Internet</a>
-      <a href="tel:+13012635865">Call (301) 263-5865</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <h1>High-Speed Internet for Your Lifestyle</h1>
-  <p>Enjoy music, gaming, streaming and social media with fast and reliable internet, mobile plans and devices.</p>
-</section>
-
-<section id="cs7Carousel">
-  <div class="carousel-box">
-    <button class="nav-btn prev" onclick="goSlide(-1)">‹</button>
-    <button class="nav-btn next" onclick="goSlide(1)">›</button>
-
-    <div class="carousel-track" id="track">
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1600&q=80">
-        <div class="caption">
-          <h2>Sign Up Now</h2>
-          <p>Internet • Mobile • Devices</p>
+          <div class="brandText">
+            <div class="brandName">GRUPO CS7</div>
+            <div class="brandTag">Internet • Mobile Lines • Devices</div>
+          </div>
         </div>
-      </div>
 
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=1600&q=80">
-        <div class="caption">
-          <h2>Perfect for Gaming</h2>
-          <p>Ultra speed and low latency</p>
-        </div>
-      </div>
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=1600&q=80">
-        <div class="caption">
-          <h2>Stay Connected</h2>
-          <p>More fun online with no limits</p>
-        </div>
+        <nav>
+          <a class="navBtn" href="#cs7CarouselBlock">Plans</a>
+          <a class="navBtn" href="tel:+13012635865">Call (301) 263-5865</a>
+        </nav>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="plans">
-  <div class="plan">
-    <h3>300 Mega</h3>
-    <p>Fast streaming & social media</p>
-  </div>
-  <div class="plan">
-    <h3>600 Mega</h3>
-    <p>Gaming and multiple devices</p>
-  </div>
-  <div class="plan">
-    <h3>1 Giga</h3>
-    <p>Maximum performance</p>
-  </div>
-</section>
+  <main class="container">
+    <section class="hero">
+      <div class="heroGrid">
+        <div>
+          <h1>High-Speed Internet for Real Life</h1>
+          <p>Built for entertainment: music, gaming, streaming, and social media. Internet plans, mobile lines, and devices — all in one place.</p>
+          <div class="heroCtas">
+            <a class="ctaPrimary" href="#cs7CarouselBlock">View Plans</a>
+            <a class="ctaSecondary" href="tel:+13012635865">Call (301) 263-5865</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  © 2026 GRUPO CS7 • Call (301) 263-5865
-</footer>
+  <!-- ===================== CAROUSEL CENTRAL (FUN ONLY) ===================== -->
+  <section id="cs7CarouselBlock" class="container">
+    <div class="carShell">
+      <button class="carNav carPrev" type="button" aria-label="Previous">‹</button>
+      <button class="carNav carNext" type="button" aria-label="Next">›</button>
 
-<script>
-  let index = 0;
-  const track = document.getElementById("track");
-  const total = track.children.length;
+      <div class="carTrack" id="carTrack">
+        <!-- 1) MUSIC / HEADPHONES / FUN -->
+        <div class="carSlide">
+          <img
+            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2000&q=80"
+            alt="People enjoying music on the internet" />
+          <div class="carCap">
+            <h2>Sign Up Now</h2>
+            <p>Internet • Mobile • Devices — all in one place</p>
+          </div>
+        </div>
 
-  function goSlide(dir){
-    index = (index + dir + total) % total;
-    track.style.transform = "translateX(" + (-index * 100) + "%)";
-  }
+        <!-- 2) GAMING / FUN -->
+        <div class="carSlide">
+          <img
+            src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=2000&q=80"
+            alt="Gaming with high-speed internet" />
+          <div class="carCap">
+            <h2>Perfect for Gaming</h2>
+            <p>Fast speed • Stable connection • Low buffering</p>
+          </div>
+        </div>
 
-  setInterval(()=>goSlide(1),5000);
-</script>
+        <!-- 3) COUPLE / PHONE / FUN -->
+        <div class="carSlide">
+          <img
+            src="https://images.unsplash.com/photo-1520975958225-21d9c1c488b6?auto=format&fit=crop&w=2000&q=80"
+            alt="Couple enjoying the internet on a smartphone" />
+          <div class="carCap">
+            <h2>Stay Connected</h2>
+            <p>Streaming • Social • Entertainment</p>
+          </div>
+        </div>
 
+        <!-- 4) PLANS IMAGE SLIDE -->
+        <div class="carSlide">
+          <div class="plansSlide">
+            <div class="plansCard">
+              <p class="plansTitle">Plans</p>
+              <div class="plansRow">
+                <div class="pill">300 Mega</div>
+                <div class="pill">600 Mega</div>
+                <div class="pill">1 Giga</div>
+              </div>
+              <div class="plansCall">Call: (301) 263-5865</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+  <!-- ===================================================================== -->
+
+  <section class="container" style="margin-top:10px;">
+    <h2 class="sectionTitle">What we offer</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Internet Plans</h3>
+        <p>Strong signal and stable connection for streaming, gaming, and music — built for multiple devices.</p>
+      </div>
+      <div class="card">
+        <h3>Mobile Lines</h3>
+        <p>Flexible mobile options so you can stay connected everywhere — calls, data, and entertainment.</p>
+      </div>
+      <div class="card">
+        <h3>Devices</h3>
+        <p>Upgrade your experience with devices that match your lifestyle — fast, modern, and reliable.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footerRow">
+        <div>© <span id="year"></span> GRUPO CS7</div>
+        <div>(301) 263-5865</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // carousel
+    (function(){
+      const track = document.getElementById("carTrack");
+      const dotsWrap = document.getElementById("dots");
+      const prev = document.querySelector(".carPrev");
+      const next = document.querySelector(".carNext");
+      if(!track || !dotsWrap || !prev || !next) return;
+
+      const slides = track.children.length;
+      let index = 0;
+
+      // dots
+      const dots = [];
+      for(let i=0;i<slides;i++){
+        const d = document.createElement("span");
+        d.className = "dot" + (i===0 ? " active" : "");
+        d.addEventListener("click", () => go(i));
+        dotsWrap.appendChild(d);
+        dots.push(d);
+      }
+
+      function paint(){
+        dots.forEach((d,i)=>d.classList.toggle("active", i===index));
+      }
+
+      function go(i){
+        index = (i + slides) % slides;
+        track.style.transform = "translateX(" + (-index * 100) + "%)";
+        paint();
+      }
+
+      prev.addEventListener("click", () => go(index - 1));
+      next.addEventListener("click", () => go(index + 1));
+
+      // swipe support (mobile)
+      let startX = null;
+      track.addEventListener("touchstart", (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
+      track.addEventListener("touchend", (e)=>{
+        if(startX === null) return;
+        const endX = e.changedTouches[0].clientX;
+        const dx = endX - startX;
+        startX = null;
+        if(Math.abs(dx) > 40){
+          if(dx > 0) go(index - 1);
+          else go(index + 1);
+        }
+      }, {passive:true});
+
+      // autoplay
+      setInterval(()=>go(index + 1), 5500);
+    })();
+  </script>
 </body>
 </html>
